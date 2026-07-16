@@ -2,11 +2,11 @@
 //////////////////////////////////////////////////////////////
 // Génération d'un courrier ODT sur base d'un formulaire    //
 //                                                          // 
-// Laurent Lefèvre - http://www.cybermonde.org              //
+// ODT Generator - https://github.com/atos-df-rennes/odtphp //
 // 															//
 //////////////////////////////////////////////////////////////
 
-// Source : https://github.com/cybermonde/odtphp
+// Source : https://github.com/atos-df-rennes/odtphp
 
 // inclure la librairie
 require_once('../library/Odf.php');
