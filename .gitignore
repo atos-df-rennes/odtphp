@@ -4,3 +4,4 @@ bin/
 tests/index.php
 .idea
 .php-cs-fixer.cache
+.phpunit.cache
