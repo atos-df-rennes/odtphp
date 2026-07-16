@@ -18,7 +18,9 @@ return (new Config())
             // 💡 additional files, eg bin entry file
             // ->append([__DIR__.'/bin-entry-file'])
             // 💡 folders to exclude, if any
-            // ->exclude([/* ... */])
+            // vendored library, not maintained here; excluded until the Phase 4
+            // pclzip-vs-ext-zip decision is made (see session plan)
+            ->exclude(['lib'])
             // 💡 path patterns to exclude, if any
             // ->notPath([/* ... */])
             // 💡 extra configs
