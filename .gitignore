@@ -3,3 +3,4 @@ build/
 bin/
 tests/index.php
 .idea
+.php-cs-fixer.cache
