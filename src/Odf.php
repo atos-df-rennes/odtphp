@@ -24,21 +24,21 @@ use Odtphp\Zip\PhpZipProxy;
  */
 class Odf
 {
-    protected $config = array(
-        'ZIP_PROXY' => 'Odtphp\\Zip\\PclZipProxy',
+    protected $config = [
+        'ZIP_PROXY' => \Odtphp\Zip\PclZipProxy::class,
         'DELIMITER_LEFT' => '{',
         'DELIMITER_RIGHT' => '}',
         'PATH_TO_TMP' => null
-    );
+    ];
     protected $file;
     protected $contentXml;      // To store content of content.xml file
     protected $manifestXml;     // To store content of manifest.xml file
     protected $stylesXml;       // To store content of styles.xml file
     protected $tmpfile;
-    protected $images = array();
-    protected $vars = array();
-    protected $manif_vars = array(); // array to store image names
-    protected $segments = array();
+    protected $images = [];
+    protected $vars = [];
+    protected $manif_vars = []; // array to store image names
+    protected $segments = [];
     const PIXEL_TO_CM = 0.026458333;
 
     /**
@@ -47,7 +47,7 @@ class Odf
      * @param string $filename the name of the odt file
      * @throws OdfException
      */
-    public function __construct($filename, $config = array())
+    public function __construct($filename, $config = [])
     {
         if (!is_array($config)) {
             throw new OdfException('Configuration data must be provided as array');
@@ -136,7 +136,7 @@ class Odf
             throw new OdfException("Invalid image");
         }
         if (!$width && !$height) {
-            list ($width, $height) = $size;
+            [$width, $height] = $size;
             $width *= Odf::PIXEL_TO_CM;
             $height *= Odf::PIXEL_TO_CM;
         }
@@ -164,16 +164,16 @@ IMG;
         preg_match_all($reg1, $this->contentXml, $matches);
         for ($i = 0, $size = count($matches[0]); $i < $size; $i++) {
             // Check if the current row contains a segment row.*
-            $reg2 = '#\[!--\sBEGIN\s(row.[\S]*)\s--\](.*)\[!--\sEND\s\\1\s--\]#smU';
+            $reg2 = '#\[!--\sBEGIN\s(row.[\S]*)\s\--\](.*)\[!--\sEND\s\\1\s\--\]#smU';
             if (preg_match($reg2, $matches[0][$i], $matches2)) {
                 $balise = str_replace('row.', '', $matches2[1]);
                 // Move segment tags around the row
-                $replace = array(
+                $replace = [
                     '[!-- BEGIN ' . $matches2[1] . ' --]'   => '',
                     '[!-- END ' . $matches2[1] . ' --]'     => '',
                     '<table:table-row'                          => '[!-- BEGIN ' . $balise . ' --]<table:table-row',
                     '</table:table-row>'                        => '</table:table-row>[!-- END ' . $balise . ' --]'
-                );
+                ];
                 $replacedXML = str_replace(array_keys($replace), array_values($replace), $matches[0][$i]);
                 $this->contentXml = str_replace($matches[0][$i], $replacedXML, $this->contentXml);
             }
@@ -372,7 +372,7 @@ IMG;
     protected function recursiveHtmlspecialchars($value)
     {
         if (is_array($value)) {
-            return array_map(array($this, 'recursiveHtmlspecialchars'), $value);
+            return array_map([$this, 'recursiveHtmlspecialchars'], $value);
         } else {
             return htmlspecialchars($value);
         }

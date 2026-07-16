@@ -27,20 +27,20 @@ $message = "La force de cette encyclopédie en ligne réside dans son nombre impor
 
 $odf->setVars('message', $message);
 
-$listeArticles = array(
-	array(	'titre' => 'PHP',
+$listeArticles = [
+	[	'titre' => 'PHP',
 			'texte' => 'PHP (sigle de PHP: Hypertext Preprocessor), est un langage de scripts (...)',
 			'image' => './images/php.gif'
-	),
-	array(	'titre' => 'MySQL',
+	],
+	[	'titre' => 'MySQL',
 			'texte' => 'MySQL est un système de gestion de base de données (SGDB). Selon le (...)',
 			'image' => './images/mysql.gif'
-	),
-	array(	'titre' => 'Apache',
+	],
+	[	'titre' => 'Apache',
 			'texte' => 'Apache HTTP Server, souvent appelé Apache, est un logiciel de serveur (...)',
 			'image' => './images/apache.gif'
-	)
-);
+	]
+];
 
 $article = $odf->setSegment('articles');
 foreach($listeArticles AS $element) {

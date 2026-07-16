@@ -16,11 +16,11 @@
 // First : include the librairy
 require_once('../library/Odf.php');
 
-$config = array(
+$config = [
     'ZIP_PROXY' => 'PhpZipProxy', // Make sure you have Zip extension loaded
     'DELIMITER_LEFT' => '#', // Yan can also change delimiters
     'DELIMITER_RIGHT' => '#'
-);
+];
 
 $odf = new Odf("tutoriel7.odt", $config);
 

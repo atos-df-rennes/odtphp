@@ -24,10 +24,10 @@ class Segment implements \IteratorAggregate, \Countable
     protected $xml;
     protected $xmlParsed = '';
     protected $name;
-    protected $children = array();
-    protected $vars = array();
-    public $manif_vars = array();
-    protected $images = array();
+    protected $children = [];
+    protected $vars = [];
+    public $manif_vars = [];
+    protected $images = [];
     protected $odf;
     protected $file;
     
@@ -105,7 +105,7 @@ class Segment implements \IteratorAggregate, \Countable
                     $this->manif_vars[] = $file;
                 }
 
-                $child->manif_vars = array();
+                $child->manif_vars = [];
             }
         }
         $reg = "/\[!--\sBEGIN\s$this->name\s--\](.*)\[!--\sEND\s$this->name\s--\]/smU";
@@ -130,7 +130,7 @@ class Segment implements \IteratorAggregate, \Countable
     protected function _analyseChildren($xml)
     {
         // $reg2 = "#\[!--\sBEGIN\s([\S]*)\s--\](?:<\/text:p>)?(.*)(?:<text:p\s.*>)?\[!--\sEND\s(\\1)\s--\]#sm";
-        $reg2 = "#\[!--\sBEGIN\s([\S]*)\s--\](.*)\[!--\sEND\s(\\1)\s--\]#smU";
+        $reg2 = "#\[!--\sBEGIN\s([\S]*)\s\--\](.*)\[!--\sEND\s(\\1)\s\--\]#smU";
         preg_match_all($reg2, $xml, $matches);
         for ($i = 0, $size = count($matches[0]); $i < $size; $i++) {
             if ($matches[1][$i] != $this->name) {
@@ -183,7 +183,7 @@ class Segment implements \IteratorAggregate, \Countable
             throw new OdfException("Invalid image");
         }
         if (!$width && !$height) {
-            list ($width, $height) = $size;
+            [$width, $height] = $size;
             $width *= Odf::PIXEL_TO_CM;
             $height *= Odf::PIXEL_TO_CM;
         }
@@ -224,7 +224,7 @@ IMG;
     {
         try {
             array_unshift($args, $meth);
-            return call_user_func_array(array($this, 'setVars'), $args);
+            return call_user_func_array([$this, 'setVars'], $args);
         } catch (SegmentException $e) {
             throw new SegmentException("method $meth nor var $meth exist");
         }
