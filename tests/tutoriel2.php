@@ -18,7 +18,7 @@ require_once('../library/Odf.php');
 
 $odf = new Odf("tutoriel2.odt");
 
-$odf->setVars('titre','Anaska formation');
+$odf->setVars('titre', 'Anaska formation');
 
 $message = "Anaska, leader Français de la formation informatique sur les technologies 
 Open Source, propose un catalogue de plus de 50 formations dont certaines préparent 
@@ -30,5 +30,3 @@ $odf->setImage('image', './images/anaska.jpg');
 
 // We export the file
 $odf->exportAsAttachedFile();
- 
-?>

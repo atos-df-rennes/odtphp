@@ -18,7 +18,7 @@ require_once('../library/Odf.php');
 
 $odf = new Odf("tutoriel4.odt");
 
-$odf->setVars('titre','Articles disponibles :');
+$odf->setVars('titre', 'Articles disponibles :');
 
 $categorie = $odf->setSegment('categories');
 for ($j = 1; $j <= 2; $j++) {
@@ -28,9 +28,9 @@ for ($j = 1; $j <= 2; $j++) {
         $categorie->articles->date(date('d/m/Y'));
         $categorie->articles->merge();
     }
-    for ($i = 1; $i <= 4; $i++) {   
+    for ($i = 1; $i <= 4; $i++) {
         $categorie->commentaires->texteCommentaire('Commentaire ' . $i);
-        $categorie->commentaires->merge();        
+        $categorie->commentaires->merge();
     }
     $categorie->merge();
 }
@@ -38,5 +38,3 @@ $odf->mergeSegment($categorie);
 
 // We export the file
 $odf->exportAsAttachedFile();
- 
-?>

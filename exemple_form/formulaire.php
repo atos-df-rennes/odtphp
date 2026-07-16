@@ -1,7 +1,7 @@
 <?php
 //////////////////////////////////////////////////////////////
 // Génération d'un courrier ODT sur base d'un formulaire    //
-//                                                          // 
+//                                                          //
 // ODT Generator - https://github.com/atos-df-rennes/odtphp //
 // 															//
 //////////////////////////////////////////////////////////////
@@ -14,7 +14,7 @@ require_once('../library/Odf.php');
 $odf = new odf("formulaire_template.odt");
 // si rien n'a été posté on propose le formulaire
 if (!$_POST) {
-?>
+    ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -48,17 +48,17 @@ if (!$_POST) {
 </body>
 </html>
 <?php
-// sinon on envoie le fichier généré
+    // sinon on envoie le fichier généré
 } else {
-// date du jour
-$odf->setVars('cyb_date', date("d/m/Y"));
-// données du formulaire
-$odf->setVars('cyb_invite', $_POST["invite"]);
-// gestion des accents via cet artifice html_entity_decode(htmlentities(...
-$odf->setVars('cyb_prenom', html_entity_decode(htmlentities($_POST["prenom"],ENT_NOQUOTES, "utf-8")));
-$odf->setVars('cyb_nom', html_entity_decode(htmlentities($_POST["nom"],ENT_NOQUOTES, "utf-8")));
-$odf->setVars('cyb_total', $_POST["total"]);
-// création du fichier
-$odf->exportAsAttachedFile();
+    // date du jour
+    $odf->setVars('cyb_date', date("d/m/Y"));
+    // données du formulaire
+    $odf->setVars('cyb_invite', $_POST["invite"]);
+    // gestion des accents via cet artifice html_entity_decode(htmlentities(...
+    $odf->setVars('cyb_prenom', html_entity_decode(htmlentities($_POST["prenom"], ENT_NOQUOTES, "utf-8")));
+    $odf->setVars('cyb_nom', html_entity_decode(htmlentities($_POST["nom"], ENT_NOQUOTES, "utf-8")));
+    $odf->setVars('cyb_total', $_POST["total"]);
+    // création du fichier
+    $odf->exportAsAttachedFile();
 }
 ?> 

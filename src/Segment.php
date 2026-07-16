@@ -30,7 +30,7 @@ class Segment implements \IteratorAggregate, \Countable
     protected $images = [];
     protected $odf;
     protected $file;
-    
+
     /**
      * Constructor
      *
@@ -98,7 +98,7 @@ class Segment implements \IteratorAggregate, \Countable
         $this->xmlParsed .= str_replace(array_keys($this->vars), array_values($this->vars), $this->xml);
         if ($this->hasChildren()) {
             foreach ($this->children as $child) {
-                $this->xmlParsed = str_replace($child->xml, ($child->xmlParsed=="")?$child->merge():$child->xmlParsed, $this->xmlParsed);
+                $this->xmlParsed = str_replace($child->xml, ($child->xmlParsed == "") ? $child->merge() : $child->xmlParsed, $this->xmlParsed);
                 $child->xmlParsed = '';
                 //Store all image names used in child segments in current segment array
                 foreach ($child->manif_vars as $file) {
@@ -189,8 +189,8 @@ class Segment implements \IteratorAggregate, \Countable
         }
         $anchor = $page == -1 ? 'text:anchor-type="aschar"' : "text:anchor-type=\"page\" text:anchor-page-number=\"{$page}\" svg:x=\"{$offsetX}cm\" svg:y=\"{$offsetY}cm\"";
         $xml = <<<IMG
-<draw:frame draw:style-name="fr1" draw:name="$filename" {$anchor} svg:width="{$width}cm" svg:height="{$height}cm" draw:z-index="3"><draw:image xlink:href="Pictures/$file" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/></draw:frame>
-IMG;
+            <draw:frame draw:style-name="fr1" draw:name="$filename" {$anchor} svg:width="{$width}cm" svg:height="{$height}cm" draw:z-index="3"><draw:image xlink:href="Pictures/$file" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/></draw:frame>
+            IMG;
         $this->images[$value] = $file;
         $this->manif_vars[] = $file;    //save image name as array element
         $this->setVars($key, $xml, false);
@@ -229,7 +229,7 @@ IMG;
             throw new SegmentException("method $meth nor var $meth exist");
         }
     }
-    
+
     /**
      * Returns the parsed XML
      *

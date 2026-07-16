@@ -19,7 +19,7 @@ require_once('../library/Odf.php');
 $config = [
     'ZIP_PROXY' => 'PhpZipProxy', // Make sure you have Zip extension loaded
     'DELIMITER_LEFT' => '#', // Yan can also change delimiters
-    'DELIMITER_RIGHT' => '#'
+    'DELIMITER_RIGHT' => '#',
 ];
 
 $odf = new Odf("tutoriel7.odt", $config);
@@ -35,5 +35,3 @@ $odf->setVars('message', $message);
 
 // We export the file
 $odf->exportAsAttachedFile();
- 
-?>

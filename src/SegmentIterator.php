@@ -60,6 +60,6 @@ class SegmentIterator implements \RecursiveIterator
 
     public function next()
     {
-        $this->key ++;
+        $this->key++;
     }
 }

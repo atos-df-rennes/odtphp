@@ -28,26 +28,24 @@ $message = "La force de cette encyclopédie en ligne réside dans son nombre impor
 $odf->setVars('message', $message);
 
 $listeArticles = [
-	[	'titre' => 'PHP',
-			'texte' => 'PHP (sigle de PHP: Hypertext Preprocessor), est un langage de scripts (...)',
-	],
-	[	'titre' => 'MySQL',
-			'texte' => 'MySQL est un système de gestion de base de données (SGDB). Selon le (...)',
-	],
-	[	'titre' => 'Apache',
-			'texte' => 'Apache HTTP Server, souvent appelé Apache, est un logiciel de serveur (...)',
-	],		
+    [	'titre' => 'PHP',
+        'texte' => 'PHP (sigle de PHP: Hypertext Preprocessor), est un langage de scripts (...)',
+    ],
+    [	'titre' => 'MySQL',
+        'texte' => 'MySQL est un système de gestion de base de données (SGDB). Selon le (...)',
+    ],
+    [	'titre' => 'Apache',
+        'texte' => 'Apache HTTP Server, souvent appelé Apache, est un logiciel de serveur (...)',
+    ],
 ];
 
 $article = $odf->setSegment('articles');
-foreach($listeArticles AS $element) {
-	$article->titreArticle($element['titre']);
-	$article->texteArticle($element['texte']);
-	$article->merge();
+foreach ($listeArticles as $element) {
+    $article->titreArticle($element['titre']);
+    $article->texteArticle($element['texte']);
+    $article->merge();
 }
 $odf->mergeSegment($article);
 
 // We export the file
 $odf->exportAsAttachedFile();
- 
-?>
