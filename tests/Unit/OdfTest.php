@@ -205,16 +205,39 @@ class OdfTest extends TestCase
      * Odf::setVars() runs $value through recursiveHtmlspecialchars() first
      * (which correctly handles arrays), but then unconditionally calls
      * utf8_encode($value) when charset is 'ISO-8859' (the default) without
-     * checking whether $value is still an array - utf8_encode() requires a
-     * string, so this throws a TypeError instead of the documented
-     * behaviour. Left as-is pending a Phase 2 fix decision.
+     * checking whether $value is still an array. Left as-is pending a
+     * Phase 2 fix decision.
+     *
+     * Behaviour is PHP-version dependent: internal functions only started
+     * throwing \TypeError for uncoercible argument types in PHP 8.0 (see
+     * https://www.php.net/manual/en/migration80.incompatible.php). On PHP
+     * 7.4, utf8_encode(array) instead emits an E_WARNING and returns null.
      */
     public function testSetVarsWithArrayValueAndDefaultCharsetThrowsTypeError(): void
     {
         $odf = $this->newOdf();
 
-        $this->expectException(\TypeError::class);
-        $odf->setVars('message', ['a', 'b']);
+        if (\PHP_VERSION_ID >= 80000) {
+            $this->expectException(\TypeError::class);
+            $odf->setVars('message', ['a', 'b']);
+
+            return;
+        }
+
+        $captured = null;
+        set_error_handler(static function (int $errno, string $errstr) use (&$captured): bool {
+            $captured = $errstr;
+
+            return true;
+        }, \E_WARNING);
+
+        try {
+            $odf->setVars('message', ['a', 'b']);
+        } finally {
+            restore_error_handler();
+        }
+
+        self::assertSame('utf8_encode() expects parameter 1 to be string, array given', $captured);
     }
 
     // --- setImage -----------------------------------------------------
