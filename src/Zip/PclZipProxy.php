@@ -129,14 +129,11 @@ class PclZipProxy implements ZipInterface
             $tmpfilename = self::TMP_DIR . '/' . $localname;
             $localpath = '';
         }
-        if (file_exists($filename)) {
-            copy($filename, $tmpfilename);
-            $this->pclzip->delete(PCLZIP_OPT_BY_NAME, $localname);
-            $this->pclzip->add($tmpfilename, PCLZIP_OPT_REMOVE_PATH, self::TMP_DIR, PCLZIP_OPT_ADD_PATH, $localpath);
-            unlink($tmpfilename);
-            return true;
-        }
-        return false;
+        copy($filename, $tmpfilename);
+        $this->pclzip->delete(PCLZIP_OPT_BY_NAME, $localname);
+        $this->pclzip->add($tmpfilename, PCLZIP_OPT_REMOVE_PATH, self::TMP_DIR, PCLZIP_OPT_ADD_PATH, $localpath);
+        unlink($tmpfilename);
+        return true;
     }
 
     /**
