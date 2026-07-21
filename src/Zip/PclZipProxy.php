@@ -40,9 +40,9 @@ class PclZipProxy implements ZipInterface
      * Open a Zip archive
      *
      * @param string $filename the name of the archive to open
-     * @return true if openning has succeeded
+     * @return bool if openning has succeeded
      */
-    public function open($filename)
+    public function open($filename): bool
     {
         if (true === $this->openned) {
             $this->close();
@@ -82,7 +82,7 @@ class PclZipProxy implements ZipInterface
      * @param string $contents the content of the file
      * @return bool if the file has been successful added
      */
-    public function addFromString($localname, $contents)
+    public function addFromString($localname, $contents): bool
     {
         if (false === $this->openned) {
             return false;
@@ -111,7 +111,7 @@ class PclZipProxy implements ZipInterface
      * @param string $localname the local path to the file in the archive
      * @return bool if the file has been successful added
      */
-    public function addFile($filename, $localname = null)
+    public function addFile($filename, $localname = null): bool
     {
         if (false === $this->openned) {
             return false;
@@ -140,7 +140,7 @@ class PclZipProxy implements ZipInterface
      * Close the Zip archive
      * @return bool
      */
-    public function close()
+    public function close(): bool
     {
         if (false === $this->openned) {
             return false;
