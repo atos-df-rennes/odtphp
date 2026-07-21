@@ -108,8 +108,11 @@ class Odf
         if (strpos($this->contentXml, $tag) === false && strpos($this->stylesXml, $tag) === false) {
             throw new OdfException("var $key not found in the document");
         }
-        $value = $encode ? $this->recursiveHtmlspecialchars($value) : $value;
+        // utf8_encode() must run before htmlspecialchars(), which expects
+        // valid UTF-8 input: encoding after would feed it raw ISO-8859-1
+        // bytes, causing it to silently drop or mangle accented characters.
         $value = ($charset == 'ISO-8859') ? utf8_encode($value) : $value;
+        $value = $encode ? $this->recursiveHtmlspecialchars($value) : $value;
         $this->vars[$tag] = str_replace("\n", "<text:line-break/>", $value);
         return $this;
     }

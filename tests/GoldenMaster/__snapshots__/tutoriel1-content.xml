@@ -26,7 +26,7 @@
       </text:sequence-decls>
       <text:h text:style-name="Heading_20_1" text:outline-level="1">PHP: Hypertext Preprocessor</text:h>
       <text:p text:style-name="Standard"/>
-      <text:p text:style-name="P1">Ligne 1 avec accents : ï¿½ï¿½ï¿½<text:line-break/>Ligne 2 apres un saut de ligne.</text:p>
+      <text:p text:style-name="P1">Ligne 1 avec accents : éèà<text:line-break/>Ligne 2 apres un saut de ligne.</text:p>
     </office:text>
   </office:body>
 </office:document-content>
