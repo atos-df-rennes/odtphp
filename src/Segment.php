@@ -20,6 +20,8 @@ use Odtphp\Exceptions\OdfException;
  * @copyright  GPL License 2008 - Julien Pauli - Cyril PIERRE de GEYER - Anaska (http://www.anaska.com)
  * @license    http://www.gnu.org/copyleft/gpl.html  GPL License
  * @version 1.3
+ *
+ * @implements \IteratorAggregate<string, \Odtphp\Segment>
  */
 class Segment implements \IteratorAggregate, \Countable
 {
@@ -82,7 +84,7 @@ class Segment implements \IteratorAggregate, \Countable
     /**
      * IteratorAggregate interface
      *
-     * @return Iterator
+     * @return \Iterator<string, \Odtphp\Segment>
      */
     public function getIterator()
     {
