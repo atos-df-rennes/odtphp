@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  quality:
+    name: "PHP ${{ matrix.php }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5']
+        include:
+          # Only PHP 7.4 (current composer.json requirement) is required to pass today.
+          # Each 8.x leg is promoted from allow-failure to required individually once verified green
+          # (see session plan: Phase 4/5 - incremental linter level-up & PHP 8.0 readiness).
+          - php: '7.4'
+            allow-failure: false
+          - php: '8.0'
+            allow-failure: true
+          - php: '8.1'
+            allow-failure: true
+          - php: '8.2'
+            allow-failure: true
+          - php: '8.3'
+            allow-failure: true
+          - php: '8.4'
+            allow-failure: true
+          - php: '8.5'
+            allow-failure: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP ${{ matrix.php }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: zip, mbstring, simplexml, dom, xml, xmlreader, xmlwriter, gd, iconv, ctype, fileinfo, libxml
+          coverage: none
+          tools: composer:v2
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: composer-${{ matrix.php }}-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            composer-${{ matrix.php }}-
+
+      - name: Install dependencies
+        id: install
+        continue-on-error: ${{ matrix.allow-failure }}
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: PHPStan
+        if: steps.install.outcome == 'success'
+        continue-on-error: ${{ matrix.allow-failure }}
+        run: composer analyse
+
+      - name: PHP-CS-Fixer (dry-run)
+        if: steps.install.outcome == 'success'
+        continue-on-error: ${{ matrix.allow-failure }}
+        run: vendor/bin/php-cs-fixer fix --dry-run --diff
+
+      - name: Rector (dry-run)
+        if: steps.install.outcome == 'success'
+        continue-on-error: ${{ matrix.allow-failure }}
+        run: vendor/bin/rector --dry-run
+
+      - name: PHPUnit (incl. golden master)
+        if: steps.install.outcome == 'success'
+        continue-on-error: ${{ matrix.allow-failure }}
+        run: composer test
