@@ -100,9 +100,8 @@ class Odf
      * @param string $value replacement value
      * @param bool $encode if true, special XML characters are encoded
      * @throws OdfException
-     * @return odf
      */
-    public function setVars($key, $value, $encode = true, $charset = 'ISO-8859')
+    public function setVars($key, $value, $encode = true, $charset = 'ISO-8859'): self
     {
         $tag = $this->config['DELIMITER_LEFT'] . $key . $this->config['DELIMITER_RIGHT'];
         if (strpos($this->contentXml, $tag) === false && strpos($this->stylesXml, $tag) === false) {
@@ -128,9 +127,8 @@ class Odf
      * @param integer $offsetX offset by horizontal (not used if $page = -1)
      * @param integer $offsetY offset by vertical (not used if $page = -1)
      * @throws OdfException
-     * @return odf
      */
-    public function setImage($key, $value, $page = -1, $width = null, $height = null, $offsetX = null, $offsetY = null)
+    public function setImage($key, $value, $page = -1, $width = null, $height = null, $offsetX = null, $offsetY = null): self
     {
         $filename = strtok(strrchr($value, '/'), '/.');
         $file = substr(strrchr($value, '/'), 1);
@@ -199,9 +197,8 @@ class Odf
      *
      * @param Segment $segment
      * @throws OdfException
-     * @return odf
      */
-    public function mergeSegment(Segment $segment)
+    public function mergeSegment(Segment $segment): self
     {
         if (! array_key_exists($segment->getName(), $this->segments)) {
             throw new OdfException($segment->getName() . 'cannot be parsed, has it been set yet ?');

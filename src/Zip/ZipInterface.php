@@ -30,7 +30,7 @@ interface ZipInterface
      * Retrieve the content of a file within the archive from its name
      *
      * @param string $name the name of the file to extract
-     * @return the content of the file in a string
+     * @return false|string the content of the file in a string
      */
     public function getFromName($name);
 

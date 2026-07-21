@@ -68,7 +68,7 @@ class Segment implements \IteratorAggregate, \Countable
      */
     public function hasChildren()
     {
-        return $this->getIterator()->hasChildren();
+        return [] !== $this->children;
     }
 
     /**
