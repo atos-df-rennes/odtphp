@@ -268,13 +268,13 @@ class Odf
     /**
      * Save the odt file on the disk
      *
-     * @param string $file name of the desired file
+     * @param ?string $file name of the desired file
      * @throws OdfException
      * @return void
      */
     public function saveToDisk($file = null)
     {
-        if ($file !== null && is_string($file)) {
+        if ($file !== null) {
             if (file_exists($file) && !(is_file($file) && is_writable($file))) {
                 throw new OdfException('Permission denied : can\'t create ' . $file);
             }
