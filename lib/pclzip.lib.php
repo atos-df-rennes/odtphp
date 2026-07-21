@@ -1837,12 +1837,21 @@ class PclZip
         $v_memory_limit = trim($v_memory_limit);
         $last = strtolower(substr($v_memory_limit, -1));
 
+        // ----- Strip the unit suffix before casting to a number: multiplying
+        // the raw string (eg. "512M") instead of its numeric prefix ("512")
+        // triggers a "non (well formed) numeric value encountered" warning
+        // on every PHP version, since the trailing letter makes it an
+        // ill-formed numeric string.
+        if ($last == 'g' || $last == 'm' || $last == 'k') {
+            $v_memory_limit = (int) substr($v_memory_limit, 0, -1);
+        } else {
+            $v_memory_limit = (int) $v_memory_limit;
+        }
+
         if ($last == 'g') {
-            //$v_memory_limit = $v_memory_limit*1024*1024*1024;
             $v_memory_limit = $v_memory_limit * 1073741824;
         }
         if ($last == 'm') {
-            //$v_memory_limit = $v_memory_limit*1024*1024;
             $v_memory_limit = $v_memory_limit * 1048576;
         }
         if ($last == 'k') {
