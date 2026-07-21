@@ -345,7 +345,7 @@ class Odf
     /**
      * Returns a variable of configuration
      *
-     * @return string The requested variable of configuration
+     * @return false|string The requested variable of configuration
      */
     public function getConfig($configKey)
     {

@@ -80,7 +80,7 @@ class PclZipProxy implements ZipInterface
      *
      * @param string $localname the local path to the file in the archive
      * @param string $contents the content of the file
-     * @return true if the file has been successful added
+     * @return bool if the file has been successful added
      */
     public function addFromString($localname, $contents)
     {
@@ -109,7 +109,7 @@ class PclZipProxy implements ZipInterface
      *
      * @param string $filename the path to the file we want to add
      * @param string $localname the local path to the file in the archive
-     * @return true if the file has been successful added
+     * @return bool if the file has been successful added
      */
     public function addFile($filename, $localname = null)
     {
@@ -141,7 +141,7 @@ class PclZipProxy implements ZipInterface
 
     /**
      * Close the Zip archive
-     * @return true
+     * @return bool
      */
     public function close()
     {
