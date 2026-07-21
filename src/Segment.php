@@ -3,6 +3,8 @@
 namespace Odtphp;
 
 use Odtphp\SegmentIterator;
+use Odtphp\Exceptions\SegmentException;
+use Odtphp\Exceptions\OdfException;
 
 /**
  * Class for handling templating segments with odt files
@@ -24,13 +26,13 @@ class Segment implements \IteratorAggregate, \Countable
     protected $xml;
     protected $xmlParsed = '';
     protected $name;
-    protected $children = array();
-    protected $vars = array();
-    public $manif_vars = array();
-    protected $images = array();
+    protected $children = [];
+    protected $vars = [];
+    public $manif_vars = [];
+    protected $images = [];
     protected $odf;
     protected $file;
-    
+
     /**
      * Constructor
      *
@@ -98,14 +100,14 @@ class Segment implements \IteratorAggregate, \Countable
         $this->xmlParsed .= str_replace(array_keys($this->vars), array_values($this->vars), $this->xml);
         if ($this->hasChildren()) {
             foreach ($this->children as $child) {
-                $this->xmlParsed = str_replace($child->xml, ($child->xmlParsed=="")?$child->merge():$child->xmlParsed, $this->xmlParsed);
+                $this->xmlParsed = str_replace($child->xml, ($child->xmlParsed == "") ? $child->merge() : $child->xmlParsed, $this->xmlParsed);
                 $child->xmlParsed = '';
                 //Store all image names used in child segments in current segment array
                 foreach ($child->manif_vars as $file) {
                     $this->manif_vars[] = $file;
                 }
 
-                $child->manif_vars = array();
+                $child->manif_vars = [];
             }
         }
         $reg = "/\[!--\sBEGIN\s$this->name\s--\](.*)\[!--\sEND\s$this->name\s--\]/smU";
@@ -130,7 +132,7 @@ class Segment implements \IteratorAggregate, \Countable
     protected function _analyseChildren($xml)
     {
         // $reg2 = "#\[!--\sBEGIN\s([\S]*)\s--\](?:<\/text:p>)?(.*)(?:<text:p\s.*>)?\[!--\sEND\s(\\1)\s--\]#sm";
-        $reg2 = "#\[!--\sBEGIN\s([\S]*)\s--\](.*)\[!--\sEND\s(\\1)\s--\]#smU";
+        $reg2 = "#\[!--\sBEGIN\s([\S]*)\s\--\](.*)\[!--\sEND\s(\\1)\s\--\]#smU";
         preg_match_all($reg2, $xml, $matches);
         for ($i = 0, $size = count($matches[0]); $i < $size; $i++) {
             if ($matches[1][$i] != $this->name) {
@@ -183,14 +185,14 @@ class Segment implements \IteratorAggregate, \Countable
             throw new OdfException("Invalid image");
         }
         if (!$width && !$height) {
-            list ($width, $height) = $size;
+            [$width, $height] = $size;
             $width *= Odf::PIXEL_TO_CM;
             $height *= Odf::PIXEL_TO_CM;
         }
         $anchor = $page == -1 ? 'text:anchor-type="aschar"' : "text:anchor-type=\"page\" text:anchor-page-number=\"{$page}\" svg:x=\"{$offsetX}cm\" svg:y=\"{$offsetY}cm\"";
         $xml = <<<IMG
-<draw:frame draw:style-name="fr1" draw:name="$filename" {$anchor} svg:width="{$width}cm" svg:height="{$height}cm" draw:z-index="3"><draw:image xlink:href="Pictures/$file" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/></draw:frame>
-IMG;
+            <draw:frame draw:style-name="fr1" draw:name="$filename" {$anchor} svg:width="{$width}cm" svg:height="{$height}cm" draw:z-index="3"><draw:image xlink:href="Pictures/$file" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/></draw:frame>
+            IMG;
         $this->images[$value] = $file;
         $this->manif_vars[] = $file;    //save image name as array element
         $this->setVars($key, $xml, false);
@@ -224,12 +226,12 @@ IMG;
     {
         try {
             array_unshift($args, $meth);
-            return call_user_func_array(array($this, 'setVars'), $args);
+            return call_user_func_array([$this, 'setVars'], $args);
         } catch (SegmentException $e) {
             throw new SegmentException("method $meth nor var $meth exist");
         }
     }
-    
+
     /**
      * Returns the parsed XML
      *

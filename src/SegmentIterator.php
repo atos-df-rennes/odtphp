@@ -20,6 +20,8 @@ class SegmentIterator implements \RecursiveIterator
 {
     private $ref;
     private $key;
+    /** @var array<int|string> */
+    private $keys = [];
 
     public function __construct(array $ref)
     {
@@ -60,6 +62,6 @@ class SegmentIterator implements \RecursiveIterator
 
     public function next()
     {
-        $this->key ++;
+        $this->key++;
     }
 }

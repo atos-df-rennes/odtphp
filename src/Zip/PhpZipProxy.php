@@ -35,7 +35,7 @@ class PhpZipProxy implements ZipInterface
         if (! class_exists('ZipArchive')) {
             throw new PhpZipProxyException('Zip extension not loaded - check your php settings, PHP5.2 minimum with zip extension is required for using PhpZipProxy');
         }
-        $this->zipArchive = new ZipArchive();
+        $this->zipArchive = new \ZipArchive();
     }
 
     /**
@@ -47,7 +47,7 @@ class PhpZipProxy implements ZipInterface
     public function open($filename)
     {
         $this->filename = $filename;
-        return $this->zipArchive->open($filename, ZIPARCHIVE::CREATE);
+        return $this->zipArchive->open($filename, \ZipArchive::CREATE);
     }
 
     /**

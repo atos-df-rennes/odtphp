@@ -27,31 +27,29 @@ $message = "La force de cette encyclopédie en ligne réside dans son nombre impor
 
 $odf->setVars('message', $message);
 
-$listeArticles = array(
-	array(	'titre' => 'PHP',
-			'texte' => 'PHP (sigle de PHP: Hypertext Preprocessor), est un langage de scripts (...)',
-			'image' => './images/php.gif'
-	),
-	array(	'titre' => 'MySQL',
-			'texte' => 'MySQL est un système de gestion de base de données (SGDB). Selon le (...)',
-			'image' => './images/mysql.gif'
-	),
-	array(	'titre' => 'Apache',
-			'texte' => 'Apache HTTP Server, souvent appelé Apache, est un logiciel de serveur (...)',
-			'image' => './images/apache.gif'
-	)
-);
+$listeArticles = [
+    [	'titre' => 'PHP',
+        'texte' => 'PHP (sigle de PHP: Hypertext Preprocessor), est un langage de scripts (...)',
+        'image' => './images/php.gif',
+    ],
+    [	'titre' => 'MySQL',
+        'texte' => 'MySQL est un système de gestion de base de données (SGDB). Selon le (...)',
+        'image' => './images/mysql.gif',
+    ],
+    [	'titre' => 'Apache',
+        'texte' => 'Apache HTTP Server, souvent appelé Apache, est un logiciel de serveur (...)',
+        'image' => './images/apache.gif',
+    ],
+];
 
 $article = $odf->setSegment('articles');
-foreach($listeArticles AS $element) {
-	$article->titreArticle($element['titre']);
-	$article->texteArticle($element['texte']);
-	$article->setImage('image', $element['image']);
-	$article->merge();
+foreach ($listeArticles as $element) {
+    $article->titreArticle($element['titre']);
+    $article->texteArticle($element['texte']);
+    $article->setImage('image', $element['image']);
+    $article->merge();
 }
 $odf->mergeSegment($article);
 
 // We export the file
 $odf->exportAsAttachedFile();
- 
-?>

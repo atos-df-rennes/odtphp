@@ -24,22 +24,22 @@ use Odtphp\Zip\PhpZipProxy;
  */
 class Odf
 {
-    protected $config = array(
-        'ZIP_PROXY' => 'Odtphp\\Zip\\PclZipProxy',
+    protected $config = [
+        'ZIP_PROXY' => \Odtphp\Zip\PclZipProxy::class,
         'DELIMITER_LEFT' => '{',
         'DELIMITER_RIGHT' => '}',
-        'PATH_TO_TMP' => null
-    );
+        'PATH_TO_TMP' => null,
+    ];
     protected $file;
     protected $contentXml;      // To store content of content.xml file
     protected $manifestXml;     // To store content of manifest.xml file
     protected $stylesXml;       // To store content of styles.xml file
     protected $tmpfile;
-    protected $images = array();
-    protected $vars = array();
-    protected $manif_vars = array(); // array to store image names
-    protected $segments = array();
-    const PIXEL_TO_CM = 0.026458333;
+    protected $images = [];
+    protected $vars = [];
+    protected $manif_vars = []; // array to store image names
+    protected $segments = [];
+    public const PIXEL_TO_CM = 0.026458333;
 
     /**
      * Class constructor
@@ -47,7 +47,7 @@ class Odf
      * @param string $filename the name of the odt file
      * @throws OdfException
      */
-    public function __construct($filename, $config = array())
+    public function __construct($filename, $config = [])
     {
         if (!is_array($config)) {
             throw new OdfException('Configuration data must be provided as array');
@@ -74,9 +74,9 @@ class Odf
         if (($this->manifestXml = $this->file->getFromName('META-INF/manifest.xml')) === false) {
             throw new OdfException("Something is wrong with META-INF/manifest.xm in source file '$filename'");
         }
-        
+
         $this->file->close();
-        
+
         $tmp = tempnam($this->config['PATH_TO_TMP'], md5(uniqid()));
         copy($filename, $tmp);
         $this->tmpfile = $tmp;
@@ -104,9 +104,9 @@ class Odf
      */
     public function setVars($key, $value, $encode = true, $charset = 'ISO-8859')
     {
-        $tag= $this->config['DELIMITER_LEFT'] . $key . $this->config['DELIMITER_RIGHT'];
+        $tag = $this->config['DELIMITER_LEFT'] . $key . $this->config['DELIMITER_RIGHT'];
         if (strpos($this->contentXml, $tag) === false && strpos($this->stylesXml, $tag) === false) {
-                throw new OdfException("var $key not found in the document");
+            throw new OdfException("var $key not found in the document");
         }
         $value = $encode ? $this->recursiveHtmlspecialchars($value) : $value;
         $value = ($charset == 'ISO-8859') ? utf8_encode($value) : $value;
@@ -136,15 +136,15 @@ class Odf
             throw new OdfException("Invalid image");
         }
         if (!$width && !$height) {
-            list ($width, $height) = $size;
+            [$width, $height] = $size;
             $width *= Odf::PIXEL_TO_CM;
             $height *= Odf::PIXEL_TO_CM;
         }
         $anchor = $page == -1 ? 'text:anchor-type="as-char"' : "text:anchor-type=\"page\" text:anchor-page-number=\"{$page}\" svg:x=\"{$offsetX}cm\" svg:y=\"{$offsetY}cm\"";
         $xml = <<<IMG
-<draw:frame draw:style-name="fr1" draw:name="$filename" {$anchor} svg:width="{$width}cm" svg:height="{$height}cm" draw:z-index="3"><draw:image xlink:href="Pictures/$file" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/></draw:frame>
-IMG;
-        
+            <draw:frame draw:style-name="fr1" draw:name="$filename" {$anchor} svg:width="{$width}cm" svg:height="{$height}cm" draw:z-index="3"><draw:image xlink:href="Pictures/$file" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/></draw:frame>
+            IMG;
+
         $this->images[$value] = $file;
         $this->manif_vars[] = $file;    //save image name as array element
         $this->setVars($key, $xml, false);
@@ -164,16 +164,16 @@ IMG;
         preg_match_all($reg1, $this->contentXml, $matches);
         for ($i = 0, $size = count($matches[0]); $i < $size; $i++) {
             // Check if the current row contains a segment row.*
-            $reg2 = '#\[!--\sBEGIN\s(row.[\S]*)\s--\](.*)\[!--\sEND\s\\1\s--\]#smU';
+            $reg2 = '#\[!--\sBEGIN\s(row.[\S]*)\s\--\](.*)\[!--\sEND\s\\1\s\--\]#smU';
             if (preg_match($reg2, $matches[0][$i], $matches2)) {
                 $balise = str_replace('row.', '', $matches2[1]);
                 // Move segment tags around the row
-                $replace = array(
+                $replace = [
                     '[!-- BEGIN ' . $matches2[1] . ' --]'   => '',
                     '[!-- END ' . $matches2[1] . ' --]'     => '',
                     '<table:table-row'                          => '[!-- BEGIN ' . $balise . ' --]<table:table-row',
-                    '</table:table-row>'                        => '</table:table-row>[!-- END ' . $balise . ' --]'
-                );
+                    '</table:table-row>'                        => '</table:table-row>[!-- END ' . $balise . ' --]',
+                ];
                 $replacedXML = str_replace(array_keys($replace), array_values($replace), $matches[0][$i]);
                 $this->contentXml = str_replace($matches[0][$i], $replacedXML, $this->contentXml);
             }
@@ -298,16 +298,16 @@ IMG;
         if (!$this->file->addFromString('content.xml', $this->contentXml) || !$this->file->addFromString('styles.xml', $this->stylesXml)) {
             throw new OdfException('Error during file export addFromString');
         }
-        $lastpos=strrpos($this->manifestXml, "\n", -15); //find second last newline in the manifest.xml file
+        $lastpos = strrpos($this->manifestXml, "\n", -15); //find second last newline in the manifest.xml file
         $manifdata = "";
 
         //Enter all images description in $manifdata variable
         foreach ($this->manif_vars as $val) {
             $ext = substr(strrchr($val, '.'), 1);
-            $manifdata = $manifdata.'<manifest:file-entry manifest:media-type="image/'.$ext.'" manifest:full-path="Pictures/'.$val.'"/>'."\n";
+            $manifdata = $manifdata . '<manifest:file-entry manifest:media-type="image/' . $ext . '" manifest:full-path="Pictures/' . $val . '"/>' . "\n";
         }
         //Place content of $manifdata variable in manifest.xml file at appropriate place
-        $this->manifestXml = substr_replace($this->manifestXml, "\n".$manifdata, $lastpos+1, 0);
+        $this->manifestXml = substr_replace($this->manifestXml, "\n" . $manifdata, $lastpos + 1, 0);
         //$this->manifestXml = $this->manifestXml ."\n".$manifdata;
 
         if (! $this->file->addFromString('META-INF/manifest.xml', $this->manifestXml)) {
@@ -332,13 +332,13 @@ IMG;
         if (headers_sent($filename, $linenum)) {
             throw new OdfException("headers already sent ($filename at $linenum)");
         }
-        
+
         if ($name == "") {
             $name = md5(uniqid()) . ".odt";
         }
-        
+
         header('Content-type: application/vnd.oasis.opendocument.text');
-        header('Content-Disposition: attachment; filename="'.$name.'"');
+        header('Content-Disposition: attachment; filename="' . $name . '"');
         readfile($this->tmpfile);
     }
 
@@ -372,7 +372,7 @@ IMG;
     protected function recursiveHtmlspecialchars($value)
     {
         if (is_array($value)) {
-            return array_map(array($this, 'recursiveHtmlspecialchars'), $value);
+            return array_map([$this, 'recursiveHtmlspecialchars'], $value);
         } else {
             return htmlspecialchars($value);
         }

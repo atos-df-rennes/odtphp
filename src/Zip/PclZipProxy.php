@@ -21,7 +21,7 @@ use Odtphp\Exceptions\PclZipProxyException;
  */
 class PclZipProxy implements ZipInterface
 {
-    const TMP_DIR = './tmp';
+    public const TMP_DIR = './tmp';
     protected $openned = false;
     protected $filename;
     protected $pclzip;
@@ -156,7 +156,7 @@ class PclZipProxy implements ZipInterface
         }
         return true;
     }
-    
+
     /**
      * Empty the temporary working directory recursively
      * @param $dir the temporary working directory
