@@ -66,7 +66,7 @@ class SegmentTest extends TestCase
                 }
             }
 
-            public function getTmpfile()
+            public function getTmpfile(): string
             {
                 return $this->tmpfile;
             }
