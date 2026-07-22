@@ -161,7 +161,7 @@ class PclZipProxy implements ZipInterface
     {
         if ($handle = opendir($dir)) {
             while (false !== ($file = readdir($handle))) {
-                if ($file != '.' && $file != '..') {
+                if ($file !== '.' && $file !== '..') {
                     if (is_dir($dir . '/' . $file)) {
                         $this->_rrmdir($dir . '/' . $file);
                         rmdir($dir . '/' . $file);
