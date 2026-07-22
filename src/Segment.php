@@ -208,7 +208,7 @@ class Segment implements \IteratorAggregate, \Countable
      * @return Segment
      * @throws SegmentException
      */
-    public function __get($prop)
+    public function __get(string $prop)
     {
         if (array_key_exists($prop, $this->children)) {
             return $this->children[$prop];
@@ -224,7 +224,7 @@ class Segment implements \IteratorAggregate, \Countable
      * @param array $args
      * @return Segment
      */
-    public function __call($meth, $args)
+    public function __call(string $meth, array $args)
     {
         try {
             array_unshift($args, $meth);
