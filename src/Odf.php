@@ -266,7 +266,7 @@ class Odf
     public function saveToDisk($file = null): void
     {
         if ($file !== null) {
-            if (file_exists($file) && !(is_file($file) && is_writable($file))) {
+            if (file_exists($file) && (!is_file($file) || !is_writable($file))) {
                 throw new OdfException('Permission denied : can\'t create ' . $file);
             }
             $this->_save();
