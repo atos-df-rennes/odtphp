@@ -37,7 +37,8 @@ class Segment implements \IteratorAggregate, \Countable
     public array $manif_vars = [];
     /** @var array<string, mixed> */
     protected array $images = [];
-    protected Odf $odf;
+    /** @var object ODF document object (duck-typed) */
+    protected $odf;
     protected ZipInterface $file;
 
     /**
@@ -45,8 +46,9 @@ class Segment implements \IteratorAggregate, \Countable
      *
      * @param string $name name of the segment to construct
      * @param string $xml XML tree of the segment
+     * @param object $odf ODF document object (duck-typed: requires getConfig() and getTmpfile())
      */
-    public function __construct(string $name, string $xml, Odf $odf)
+    public function __construct(string $name, string $xml, $odf)
     {
         $this->name = (string) $name;
         $this->xml = (string) $xml;
