@@ -66,7 +66,7 @@ class Segment implements \IteratorAggregate, \Countable
      *
      * @return bool
      */
-    public function hasChildren()
+    public function hasChildren(): bool
     {
         return [] !== $this->children;
     }
