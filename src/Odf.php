@@ -156,8 +156,6 @@ class Odf
     /**
      * Move segment tags for lines of tables
      * Called automatically within the constructor
-     *
-     * @return void
      */
     private function _moveRowSegments(): void
     {
@@ -185,8 +183,6 @@ class Odf
     /**
      * Merge template variables
      * Called automatically for a save
-     *
-     * @return void
      */
     private function _parse(): void
     {
@@ -215,8 +211,6 @@ class Odf
 
     /**
      * Display all the current template variables
-     *
-     * @return string
      */
     public function printVars(): string
     {
@@ -236,8 +230,6 @@ class Odf
 
     /**
      * Display loop segments declared with setSegment()
-     *
-     * @return string
      */
     public function printDeclaredSegments(): string
     {
@@ -270,7 +262,6 @@ class Odf
      *
      * @param ?string $file name of the desired file
      * @throws OdfException
-     * @return void
      */
     public function saveToDisk($file = null): void
     {
@@ -289,7 +280,6 @@ class Odf
      * Internal save
      *
      * @throws OdfException
-     * @return void
      */
     private function _save(): void
     {
@@ -324,7 +314,6 @@ class Odf
      *
      * @param string $name (optionnal)
      * @throws OdfException
-     * @return void
      */
     public function exportAsAttachedFile($name = ""): void
     {

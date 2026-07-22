@@ -138,7 +138,6 @@ class PclZipProxy implements ZipInterface
 
     /**
      * Close the Zip archive
-     * @return bool
      */
     public function close(): bool
     {
@@ -157,7 +156,6 @@ class PclZipProxy implements ZipInterface
     /**
      * Empty the temporary working directory recursively
      * @param $dir the temporary working directory
-     * @return void
      */
     private function _rrmdir(string $dir): void
     {
