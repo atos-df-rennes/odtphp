@@ -54,8 +54,6 @@ class Segment implements \IteratorAggregate, \Countable
 
     /**
      * Returns the name of the segment
-     *
-     * @return string
      */
     public function getName(): string
     {
@@ -64,8 +62,6 @@ class Segment implements \IteratorAggregate, \Countable
 
     /**
      * Does the segment have children ?
-     *
-     * @return bool
      */
     public function hasChildren(): bool
     {
@@ -205,7 +201,6 @@ class Segment implements \IteratorAggregate, \Countable
     /**
      * Shortcut to retrieve a child
      *
-     * @param string $prop
      * @return Segment
      * @throws SegmentException
      */
@@ -221,8 +216,6 @@ class Segment implements \IteratorAggregate, \Countable
     /**
      * Proxy for setVars
      *
-     * @param string $meth
-     * @param array $args
      * @return Segment
      */
     public function __call(string $meth, array $args)
