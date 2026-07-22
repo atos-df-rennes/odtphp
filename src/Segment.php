@@ -27,13 +27,17 @@ use Odtphp\Zip\ZipInterface;
 class Segment implements \IteratorAggregate, \Countable
 {
     protected string $xml;
-    protected $xmlParsed = '';
+    protected string $xmlParsed = '';
     protected string $name;
-    protected $children = [];
-    protected $vars = [];
-    public $manif_vars = [];
-    protected $images = [];
-    protected $odf;
+    /** @var array<string, Segment> */
+    protected array $children = [];
+    /** @var array<string, mixed> */
+    protected array $vars = [];
+    /** @var array<string, mixed> */
+    public array $manif_vars = [];
+    /** @var array<string, mixed> */
+    protected array $images = [];
+    protected Odf $odf;
     protected ZipInterface $file;
 
     /**
@@ -42,7 +46,7 @@ class Segment implements \IteratorAggregate, \Countable
      * @param string $name name of the segment to construct
      * @param string $xml XML tree of the segment
      */
-    public function __construct($name, $xml, $odf)
+    public function __construct(string $name, string $xml, Odf $odf)
     {
         $this->name = (string) $name;
         $this->xml = (string) $xml;
@@ -69,11 +73,21 @@ class Segment implements \IteratorAggregate, \Countable
     }
 
     /**
+     * Get children segments
+     *
+     * @return array<string, Segment>
+     */
+    public function getChildren(): array
+    {
+        return $this->children;
+    }
+
+    /**
      * Countable interface
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->children);
     }
@@ -83,7 +97,7 @@ class Segment implements \IteratorAggregate, \Countable
      *
      * @return \Iterator<string, \Odtphp\Segment>
      */
-    public function getIterator()
+    public function getIterator(): \Iterator
     {
         return new \RecursiveIteratorIterator(new SegmentIterator($this->children), 1);
     }
@@ -94,7 +108,7 @@ class Segment implements \IteratorAggregate, \Countable
      *
      * @return string
      */
-    public function merge()
+    public function merge(): string
     {
         $this->xmlParsed .= str_replace(array_keys($this->vars), array_values($this->vars), $this->xml);
         if ($this->hasChildren()) {
@@ -128,7 +142,7 @@ class Segment implements \IteratorAggregate, \Countable
      * @param string $xml
      * @return Segment
      */
-    protected function _analyseChildren($xml)
+    protected function _analyseChildren(string $xml): self
     {
         // $reg2 = "#\[!--\sBEGIN\s([\S]*)\s--\](?:<\/text:p>)?(.*)(?:<text:p\s.*>)?\[!--\sEND\s(\\1)\s--\]#sm";
         $reg2 = "#\[!--\sBEGIN\s([\S]*)\s\--\](.*)\[!--\sEND\s(\\1)\s\--\]#smU";
@@ -151,7 +165,7 @@ class Segment implements \IteratorAggregate, \Countable
      * @throws SegmentException
      * @return Segment
      */
-    public function setVars($key, $value, $encode = true, $charset = 'ISO-8859')
+    public function setVars(string $key, string $value, bool $encode = true, string $charset = 'ISO-8859'): self
     {
         if (strpos($this->xml, $this->odf->getConfig('DELIMITER_LEFT') . $key . $this->odf->getConfig('DELIMITER_RIGHT')) === false) {
             throw new SegmentException("var $key not found in {$this->getName()}");
@@ -167,15 +181,15 @@ class Segment implements \IteratorAggregate, \Countable
      *
      * @param string $key name of the variable within the template
      * @param string $value path to the picture
-     * @param string $page anchor to page number (or -1 if anchor-type is aschar)
-     * @param string $width width of picture (keep original if null)
-     * @param string $height height of picture (keep original if null)
-     * @param string $offsetX offset by horizontal (not used if $page = -1)
-     * @param string $offsetY offset by vertical (not used if $page = -1)
+     * @param int|null $page anchor to page number (or -1 if anchor-type is aschar)
+     * @param int|null $width width of picture (keep original if null)
+     * @param int|null $height height of picture (keep original if null)
+     * @param string|null $offsetX offset by horizontal (not used if $page = -1)
+     * @param string|null $offsetY offset by vertical (not used if $page = -1)
      * @throws OdfException
      * @return Segment
      */
-    public function setImage($key, $value, $page = null, $width = null, $height = null, $offsetX = null, $offsetY = null)
+    public function setImage(string $key, string $value, ?int $page = null, ?int $width = null, ?int $height = null, ?string $offsetX = null, ?string $offsetY = null): self
     {
         $filename = strtok(strrchr($value, '/'), '/.');
         $file = substr(strrchr($value, '/'), 1);
@@ -204,7 +218,7 @@ class Segment implements \IteratorAggregate, \Countable
      * @return Segment
      * @throws SegmentException
      */
-    public function __get(string $prop)
+    public function __get(string $prop): self
     {
         if (array_key_exists($prop, $this->children)) {
             return $this->children[$prop];
@@ -216,6 +230,8 @@ class Segment implements \IteratorAggregate, \Countable
     /**
      * Proxy for setVars
      *
+     * @param string $meth method name
+     * @param array<int, mixed> $args method arguments
      * @return Segment
      */
     public function __call(string $meth, array $args)
@@ -233,7 +249,7 @@ class Segment implements \IteratorAggregate, \Countable
      *
      * @return string
      */
-    public function getXmlParsed()
+    public function getXmlParsed(): string
     {
         return $this->xmlParsed;
     }

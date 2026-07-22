@@ -23,7 +23,7 @@ use Odtphp\Exceptions\PhpZipProxyException;
 class PhpZipProxy implements ZipInterface
 {
     protected \ZipArchive $zipArchive;
-    protected $filename;
+    protected ?string $filename;
 
     /**
      * Class constructor
@@ -44,7 +44,7 @@ class PhpZipProxy implements ZipInterface
      * @param string $filename the name of the archive to open
      * @return true if openning has succeeded
      */
-    public function open($filename)
+    public function open(string $filename): bool
     {
         $this->filename = $filename;
         return $this->zipArchive->open($filename, \ZipArchive::CREATE);
@@ -56,7 +56,7 @@ class PhpZipProxy implements ZipInterface
      * @param string $name the name of the file to extract
      * @return false|string the content of the file in a string
      */
-    public function getFromName($name)
+    public function getFromName(string $name)
     {
         return $this->zipArchive->getFromName($name);
     }
@@ -68,7 +68,7 @@ class PhpZipProxy implements ZipInterface
      * @param string $contents the content of the file
      * @return bool if the file has been successful added
      */
-    public function addFromString($localname, $contents)
+    public function addFromString(string $localname, string $contents): bool
     {
         if (file_exists($this->filename) && !is_writable($this->filename)) {
             return false;
@@ -83,7 +83,7 @@ class PhpZipProxy implements ZipInterface
      * @param string $localname the local path to the file in the archive
      * @return bool if the file has been successful added
      */
-    public function addFile($filename, $localname = null)
+    public function addFile(string $filename, ?string $localname = null): bool
     {
         if ((file_exists($this->filename) && !is_writable($this->filename))
             || !file_exists($filename)) {

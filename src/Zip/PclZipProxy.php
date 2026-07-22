@@ -22,9 +22,9 @@ use Odtphp\Exceptions\PclZipProxyException;
 class PclZipProxy implements ZipInterface
 {
     public const TMP_DIR = './tmp';
-    protected $openned = false;
-    protected $filename;
-    protected $pclzip;
+    protected bool $openned = false;
+    protected ?string $filename;
+    protected ?\PclZip $pclzip;
     /**
      * Class constructor
      *
@@ -62,7 +62,7 @@ class PclZipProxy implements ZipInterface
      * @param string $name the name of the file to extract
      * @return false|string the content of the file in a string
      */
-    public function getFromName($name)
+    public function getFromName(string $name)
     {
         if (false === $this->openned) {
             return false;
@@ -82,7 +82,7 @@ class PclZipProxy implements ZipInterface
      * @param string $contents the content of the file
      * @return bool if the file has been successful added
      */
-    public function addFromString($localname, $contents): bool
+    public function addFromString(string $localname, string $contents): bool
     {
         if (false === $this->openned) {
             return false;
@@ -111,7 +111,7 @@ class PclZipProxy implements ZipInterface
      * @param string $localname the local path to the file in the archive
      * @return bool if the file has been successful added
      */
-    public function addFile($filename, $localname = null): bool
+    public function addFile(string $filename, ?string $localname = null): bool
     {
         if (false === $this->openned) {
             return false;
