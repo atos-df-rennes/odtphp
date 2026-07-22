@@ -196,7 +196,6 @@ class Odf
     /**
      * Add the merged segment to the document
      *
-     * @param Segment $segment
      * @throws OdfException
      */
     public function mergeSegment(Segment $segment): self

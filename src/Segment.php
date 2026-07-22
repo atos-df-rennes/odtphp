@@ -205,7 +205,6 @@ class Segment implements \IteratorAggregate, \Countable
     /**
      * Shortcut to retrieve a child
      *
-     * @param string $prop
      * @return Segment
      * @throws SegmentException
      */
@@ -221,8 +220,6 @@ class Segment implements \IteratorAggregate, \Countable
     /**
      * Proxy for setVars
      *
-     * @param string $meth
-     * @param array $args
      * @return Segment
      */
     public function __call(string $meth, array $args)
