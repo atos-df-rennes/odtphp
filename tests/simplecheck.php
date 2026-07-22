@@ -55,7 +55,7 @@ $file->close();
 // for futur use, with load content.xml via DOMDocument library :
 
 $odt_content = new DOMDocument('1.0', 'utf-8');
-if ($odt_content->loadXML($contentXml) == false) {
+if ($odt_content->loadXML($contentXml) === false) {
     throw new OdfException('Unable to load content.xml by DOMDocument library ', __METHOD__);
 }
 

@@ -224,7 +224,7 @@ class Segment implements \IteratorAggregate, \Countable
             array_unshift($args, $meth);
             return call_user_func_array([$this, 'setVars'], $args);
         } catch (SegmentException $e) {
-            throw new SegmentException("method $meth nor var $meth exist");
+            throw new SegmentException("method $meth nor var $meth exist", $e->getCode(), $e);
         }
     }
 

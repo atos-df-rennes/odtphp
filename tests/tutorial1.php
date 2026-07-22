@@ -18,7 +18,7 @@ use Odtphp\Odf;
 
 // Make sure you have Zip extension or PclZip library loaded
 // First : include the librairy
-require_once '../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 $odf = new Odf("tutoriel1.odt");
 
