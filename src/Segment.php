@@ -5,6 +5,7 @@ namespace Odtphp;
 use Odtphp\SegmentIterator;
 use Odtphp\Exceptions\SegmentException;
 use Odtphp\Exceptions\OdfException;
+use Odtphp\Zip\ZipInterface;
 
 /**
  * Class for handling templating segments with odt files
@@ -33,7 +34,7 @@ class Segment implements \IteratorAggregate, \Countable
     public $manif_vars = [];
     protected $images = [];
     protected $odf;
-    protected object $file;
+    protected ZipInterface $file;
 
     /**
      * Constructor

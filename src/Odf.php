@@ -6,6 +6,7 @@ use Odtphp\Segment;
 use Odtphp\Exceptions\OdfException;
 use Odtphp\Zip\PclZipProxy;
 use Odtphp\Zip\PhpZipProxy;
+use Odtphp\Zip\ZipInterface;
 
 /**
  * Templating class for odt file
@@ -30,7 +31,7 @@ class Odf
         'DELIMITER_RIGHT' => '}',
         'PATH_TO_TMP' => null,
     ];
-    protected object $file;
+    protected ZipInterface $file;
     protected $contentXml;      // To store content of content.xml file
     protected $manifestXml;     // To store content of manifest.xml file
     protected $stylesXml;       // To store content of styles.xml file
