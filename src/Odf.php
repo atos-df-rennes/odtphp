@@ -218,7 +218,7 @@ class Odf
      *
      * @return string
      */
-    public function printVars()
+    public function printVars(): string
     {
         return print_r('<pre>' . print_r($this->vars, true) . '</pre>', true);
     }
@@ -239,7 +239,7 @@ class Odf
      *
      * @return string
      */
-    public function printDeclaredSegments()
+    public function printDeclaredSegments(): string
     {
         return '<pre>' . print_r(implode(' ', array_keys($this->segments)), true) . '</pre>';
     }
