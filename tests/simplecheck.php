@@ -63,11 +63,10 @@ if ($odt_content->loadXML($contentXml) == false) {
 
 $tmpfile = md5(uniqid()) . '.odt';
 if (!@copy($filename, $tmpfile));
-{
-    // we do not test, because sometime it return false anyway !!
-    // $errors = error_get_last();
-    // throw new OdfException("Can not copy the tempfile in $tmpfile :[".$errors['message'] ."]/[".$errors['type']."]");
-}
+// we do not test, because sometime it return false anyway !!
+// $errors = error_get_last();
+// throw new OdfException("Can not copy the tempfile in $tmpfile :[".$errors['message'] ."]/[".$errors['type']."]");
+
 
 // futur use here : $odt_content modifications ...
 
