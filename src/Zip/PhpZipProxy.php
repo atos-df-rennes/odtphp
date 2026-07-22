@@ -94,7 +94,6 @@ class PhpZipProxy implements ZipInterface
 
     /**
      * Close the Zip archive
-     * @return true
      */
     public function close(): bool
     {

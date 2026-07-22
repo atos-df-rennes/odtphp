@@ -22,7 +22,7 @@ interface ZipInterface
      * Open a Zip archive
      *
      * @param string $filename the name of the archive to open
-     * @return true if openning has succeeded
+     * @return bool true if openning has succeeded
      */
     public function open($filename);
 
@@ -39,7 +39,7 @@ interface ZipInterface
      *
      * @param string $localname the local path to the file in the archive
      * @param string $contents the content of the file
-     * @return true if the file has been successful added
+     * @return bool true if the file has been successful added
      */
     public function addFromString($localname, $contents);
 
@@ -48,13 +48,13 @@ interface ZipInterface
      *
      * @param string $filename the path to the file we want to add
      * @param string $localname the local path to the file in the archive
-     * @return true if the file has been successful added
+     * @return bool true if the file has been successful added
      */
     public function addFile($filename, $localname = null);
 
     /**
      * Close the Zip archive
-     * @return true
+     * @return bool
      */
     public function close();
 }
