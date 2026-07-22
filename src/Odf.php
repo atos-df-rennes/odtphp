@@ -158,7 +158,7 @@ class Odf
      *
      * @return void
      */
-    private function _moveRowSegments()
+    private function _moveRowSegments(): void
     {
         // Search all possible rows in the document
         $reg1 = "#<table:table-row[^>]*>(.*)</table:table-row>#smU";
@@ -187,7 +187,7 @@ class Odf
      *
      * @return void
      */
-    private function _parse()
+    private function _parse(): void
     {
         $this->contentXml = str_replace(array_keys($this->vars), array_values($this->vars), $this->contentXml);
         $this->stylesXml  = str_replace(array_keys($this->vars), array_values($this->vars), $this->stylesXml);
@@ -272,7 +272,7 @@ class Odf
      * @throws OdfException
      * @return void
      */
-    public function saveToDisk($file = null)
+    public function saveToDisk($file = null): void
     {
         if ($file !== null) {
             if (file_exists($file) && !(is_file($file) && is_writable($file))) {
@@ -291,7 +291,7 @@ class Odf
      * @throws OdfException
      * @return void
      */
-    private function _save()
+    private function _save(): void
     {
         $this->file->open($this->tmpfile);
         $this->_parse();
@@ -326,7 +326,7 @@ class Odf
      * @throws OdfException
      * @return void
      */
-    public function exportAsAttachedFile($name = "")
+    public function exportAsAttachedFile($name = ""): void
     {
         $this->_save();
         if (headers_sent($filename, $linenum)) {

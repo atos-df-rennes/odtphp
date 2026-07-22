@@ -55,12 +55,12 @@ class SegmentIterator implements \RecursiveIterator
         return array_key_exists($this->key, $this->keys);
     }
 
-    public function rewind()
+    public function rewind(): void
     {
         $this->key = 0;
     }
 
-    public function next()
+    public function next(): void
     {
         $this->key++;
     }

@@ -159,7 +159,7 @@ class PclZipProxy implements ZipInterface
      * @param $dir the temporary working directory
      * @return void
      */
-    private function _rrmdir($dir)
+    private function _rrmdir($dir): void
     {
         if ($handle = opendir($dir)) {
             while (false !== ($file = readdir($handle))) {
