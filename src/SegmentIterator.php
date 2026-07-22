@@ -18,10 +18,10 @@ namespace Odtphp;
  */
 class SegmentIterator implements \RecursiveIterator
 {
-    private $ref;
-    private $key;
+    private array $ref;
+    private int $key;
     /** @var array<int|string> */
-    private $keys = [];
+    private array $keys;
 
     public function __construct(array $ref)
     {

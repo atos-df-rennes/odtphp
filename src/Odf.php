@@ -30,7 +30,7 @@ class Odf
         'DELIMITER_RIGHT' => '}',
         'PATH_TO_TMP' => null,
     ];
-    protected $file;
+    protected object $file;
     protected $contentXml;      // To store content of content.xml file
     protected $manifestXml;     // To store content of manifest.xml file
     protected $stylesXml;       // To store content of styles.xml file

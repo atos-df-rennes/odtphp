@@ -25,15 +25,15 @@ use Odtphp\Exceptions\OdfException;
  */
 class Segment implements \IteratorAggregate, \Countable
 {
-    protected $xml;
+    protected string $xml;
     protected $xmlParsed = '';
-    protected $name;
+    protected string $name;
     protected $children = [];
     protected $vars = [];
     public $manif_vars = [];
     protected $images = [];
     protected $odf;
-    protected $file;
+    protected object $file;
 
     /**
      * Constructor

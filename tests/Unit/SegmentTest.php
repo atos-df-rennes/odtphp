@@ -41,12 +41,9 @@ class SegmentTest extends TestCase
         $this->cleanupFiles[] = $tmpfile;
 
         return new class ($tmpfile, $delimiterLeft, $delimiterRight) {
-            /** @var string */
-            private $tmpfile;
-            /** @var string */
-            private $delimiterLeft;
-            /** @var string */
-            private $delimiterRight;
+            private string $tmpfile;
+            private string $delimiterLeft;
+            private string $delimiterRight;
 
             public function __construct(string $tmpfile, string $delimiterLeft, string $delimiterRight)
             {
