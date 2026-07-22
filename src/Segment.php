@@ -5,6 +5,7 @@ namespace Odtphp;
 use Odtphp\SegmentIterator;
 use Odtphp\Exceptions\SegmentException;
 use Odtphp\Exceptions\OdfException;
+use Odtphp\Zip\ZipInterface;
 
 /**
  * Class for handling templating segments with odt files
@@ -25,15 +26,15 @@ use Odtphp\Exceptions\OdfException;
  */
 class Segment implements \IteratorAggregate, \Countable
 {
-    protected $xml;
+    protected string $xml;
     protected $xmlParsed = '';
-    protected $name;
+    protected string $name;
     protected $children = [];
     protected $vars = [];
     public $manif_vars = [];
     protected $images = [];
     protected $odf;
-    protected $file;
+    protected ZipInterface $file;
 
     /**
      * Constructor
@@ -56,7 +57,7 @@ class Segment implements \IteratorAggregate, \Countable
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -66,7 +67,7 @@ class Segment implements \IteratorAggregate, \Countable
      *
      * @return bool
      */
-    public function hasChildren()
+    public function hasChildren(): bool
     {
         return [] !== $this->children;
     }
@@ -208,7 +209,7 @@ class Segment implements \IteratorAggregate, \Countable
      * @return Segment
      * @throws SegmentException
      */
-    public function __get($prop)
+    public function __get(string $prop)
     {
         if (array_key_exists($prop, $this->children)) {
             return $this->children[$prop];
@@ -224,7 +225,7 @@ class Segment implements \IteratorAggregate, \Countable
      * @param array $args
      * @return Segment
      */
-    public function __call($meth, $args)
+    public function __call(string $meth, array $args)
     {
         try {
             array_unshift($args, $meth);
