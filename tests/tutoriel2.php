@@ -14,7 +14,7 @@
 
 // Make sure you have Zip extension or PclZip library loaded
 // First : include the librairy
-require_once('../library/Odf.php');
+require_once(__DIR__ . '/../library/Odf.php');
 
 $odf = new Odf("tutoriel2.odt");
 
