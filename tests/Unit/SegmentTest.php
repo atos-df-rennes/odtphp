@@ -216,18 +216,15 @@ class SegmentTest extends TestCase
     }
 
     /**
-     * Known limitation (documented, not fixed in this test-only phase):
-     * SegmentIterator::getChildren() accesses $segment->children from
-     * outside the Segment class. Since $children is protected, PHP
-     * routes this through Segment::__get(), which looks for a CHILD
-     * SEGMENT literally named "children" instead of returning the
-     * children array - and throws SegmentException when none exists.
-     * This only manifests through true recursive iteration (getIterator()
-     * + RecursiveIteratorIterator descending 2+ levels); Odf::mergeSegment()
-     * / Segment::merge() never hit this path because they recurse manually
-     * over $this->children. Left as-is pending a Phase 2+ fix decision.
+     * Regression test: PHPStan level 6 upgrades added public Segment::getChildren()
+     * accessor to fix a visibility bug where recursive iteration (getIterator() +
+     * RecursiveIteratorIterator descending 2+ levels) would fail because
+     * SegmentIterator::getChildren() was accessing protected $segment->children
+     * from outside the class, triggering __get() magic method.
+     *
+     * This test verifies that recursive iteration now works correctly at all nesting levels.
      */
-    public function testRecursiveIteratorDescendingTwoLevelsHitsKnownVisibilityBug(): void
+    public function testRecursiveIteratorDescendingTwoLevelsWorksAfterVisibilityFix(): void
     {
         $xml = '[!-- BEGIN outer --]before'
             . '[!-- BEGIN middle --]midbefore'
@@ -236,13 +233,18 @@ class SegmentTest extends TestCase
             . 'after[!-- END outer --]';
         $segment = new Segment('outer', $xml, $this->stubOdf());
 
-        $this->expectException(SegmentException::class);
-        $this->expectExceptionMessage('child children does not exist');
-
-        foreach ($segment->getIterator() as $item) {
-            // Triggering the iteration is enough: RecursiveIteratorIterator
-            // calls getChildren() on "middle" once it detects a further
-            // nested "inner" segment.
+        $collected = [];
+        foreach ($segment->getIterator() as $key => $item) {
+            $collected[] = [
+                'key' => $key,
+                'name' => $item->getName(),
+            ];
         }
+
+        // Verify we can now successfully iterate through all nesting levels
+        self::assertNotEmpty($collected, 'Should collect nested segments without throwing');
+        self::assertCount(2, $collected, 'Should iterate outer->middle and outer->inner');
+        self::assertSame('middle', $collected[0]['name']);
+        self::assertSame('inner', $collected[1]['name']);
     }
 }

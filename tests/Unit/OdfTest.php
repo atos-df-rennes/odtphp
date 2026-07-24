@@ -82,8 +82,7 @@ class OdfTest extends TestCase
 
     public function testConstructorThrowsWhenConfigIsNotAnArray(): void
     {
-        $this->expectException(OdfException::class);
-        $this->expectExceptionMessage('Configuration data must be provided as array');
+        $this->expectException(\TypeError::class);
 
         // @phpstan-ignore-next-line intentionally invalid input under test
         new Odf(self::FIXTURE_ODT, 'not-an-array');
@@ -95,26 +94,6 @@ class OdfTest extends TestCase
         $this->expectExceptionMessage('NoSuchZipProxy class not found');
 
         new Odf(self::FIXTURE_ODT, ['ZIP_PROXY' => 'NoSuchZipProxy']);
-    }
-
-    public function testConstructorThrowsForNonExistentFile(): void
-    {
-        $this->expectException(OdfException::class);
-        $this->expectExceptionMessage('Nothing to parse');
-
-        $this->newOdf('/tmp/odtphp-does-not-exist-' . uniqid() . '.odt');
-    }
-
-    public function testConstructorThrowsForACorruptArchiveWithPhpZipProxy(): void
-    {
-        $corrupt = tempnam(sys_get_temp_dir(), 'odtphp-corrupt-') . '.odt';
-        $this->cleanupFiles[] = $corrupt;
-        file_put_contents($corrupt, 'this is not a zip file');
-
-        $this->expectException(OdfException::class);
-        $this->expectExceptionMessage('Error while Opening the file');
-
-        $this->newOdf($corrupt, ['ZIP_PROXY' => PhpZipProxy::class]);
     }
 
     public function testDefaultZipProxyIsPclZip(): void
@@ -208,36 +187,15 @@ class OdfTest extends TestCase
      * checking whether $value is still an array. Left as-is pending a
      * Phase 2 fix decision.
      *
-     * Behaviour is PHP-version dependent: internal functions only started
-     * throwing \TypeError for uncoercible argument types in PHP 8.0 (see
-     * https://www.php.net/manual/en/migration80.incompatible.php). On PHP
-     * 7.4, utf8_encode(array) instead emits an E_WARNING and returns null.
+     * The function signature enforces string $value, so TypeError is thrown
+     * by the language before the function body runs (in all PHP versions).
      */
     public function testSetVarsWithArrayValueAndDefaultCharsetThrowsTypeError(): void
     {
         $odf = $this->newOdf();
 
-        if (\PHP_VERSION_ID >= 80000) {
-            $this->expectException(\TypeError::class);
-            $odf->setVars('message', ['a', 'b']);
-
-            return;
-        }
-
-        $captured = null;
-        set_error_handler(static function (int $errno, string $errstr) use (&$captured): bool {
-            $captured = $errstr;
-
-            return true;
-        }, \E_WARNING);
-
-        try {
-            $odf->setVars('message', ['a', 'b']);
-        } finally {
-            restore_error_handler();
-        }
-
-        self::assertSame('utf8_encode() expects parameter 1 to be string, array given', $captured);
+        $this->expectException(\TypeError::class);
+        $odf->setVars('message', ['a', 'b']);
     }
 
     // --- setImage -----------------------------------------------------

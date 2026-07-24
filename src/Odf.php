@@ -25,34 +25,37 @@ use Odtphp\Zip\ZipInterface;
  */
 class Odf
 {
-    protected $config = [
+    /** @var array<string, mixed> */
+    protected array $config = [
         'ZIP_PROXY' => \Odtphp\Zip\PclZipProxy::class,
         'DELIMITER_LEFT' => '{',
         'DELIMITER_RIGHT' => '}',
         'PATH_TO_TMP' => null,
     ];
     protected ZipInterface $file;
-    protected $contentXml;      // To store content of content.xml file
-    protected $manifestXml;     // To store content of manifest.xml file
-    protected $stylesXml;       // To store content of styles.xml file
-    protected $tmpfile;
-    protected $images = [];
-    protected $vars = [];
-    protected $manif_vars = []; // array to store image names
-    protected $segments = [];
+    protected string $contentXml;      // To store content of content.xml file
+    protected string $manifestXml;     // To store content of manifest.xml file
+    protected string $stylesXml;       // To store content of styles.xml file
+    protected string $tmpfile;
+    /** @var array<string, string> */
+    protected array $images = [];
+    /** @var array<string, string> */
+    protected array $vars = [];
+    /** @var array<int, string> */
+    protected array $manif_vars = []; // array to store image names
+    /** @var array<string, Segment> */
+    protected array $segments = [];
     public const PIXEL_TO_CM = 0.026458333;
 
     /**
      * Class constructor
      *
      * @param string $filename the name of the odt file
+     * @param array<string, mixed> $config configuration options
      * @throws OdfException
      */
-    public function __construct($filename, $config = [])
+    public function __construct(string $filename, array $config = [])
     {
-        if (!is_array($config)) {
-            throw new OdfException('Configuration data must be provided as array');
-        }
         foreach ($config as $configKey => $configValue) {
             if (array_key_exists($configKey, $this->config)) {
                 $this->config[$configKey] = $configValue;
@@ -63,7 +66,7 @@ class Odf
         }
         $zipHandler = $this->config['ZIP_PROXY'];
         $this->file = new $zipHandler();
-        if ($this->file->open($filename) !== true) {
+        if (!$this->file->open($filename)) {
             throw new OdfException("Error while Opening the file '$filename' - Check your odt file");
         }
         if (($this->contentXml = $this->file->getFromName('content.xml')) === false) {
@@ -102,7 +105,7 @@ class Odf
      * @param bool $encode if true, special XML characters are encoded
      * @throws OdfException
      */
-    public function setVars($key, $value, $encode = true, $charset = 'ISO-8859'): self
+    public function setVars(string $key, string $value, bool $encode = true, string $charset = 'ISO-8859'): self
     {
         $tag = $this->config['DELIMITER_LEFT'] . $key . $this->config['DELIMITER_RIGHT'];
         if (strpos($this->contentXml, $tag) === false && strpos($this->stylesXml, $tag) === false) {
@@ -111,7 +114,7 @@ class Odf
         // utf8_encode() must run before htmlspecialchars(), which expects
         // valid UTF-8 input: encoding after would feed it raw ISO-8859-1
         // bytes, causing it to silently drop or mangle accented characters.
-        $value = ($charset == 'ISO-8859') ? utf8_encode($value) : $value;
+        $value = ($charset === 'ISO-8859') ? utf8_encode($value) : $value;
         $value = $encode ? $this->recursiveHtmlspecialchars($value) : $value;
         $this->vars[$tag] = str_replace("\n", "<text:line-break/>", $value);
         return $this;
@@ -239,11 +242,9 @@ class Odf
     /**
      * Declare a segment in order to use it in a loop
      *
-     * @param string $segment
      * @throws OdfException
-     * @return Segment
      */
-    public function setSegment($segment)
+    public function setSegment(string $segment): Segment
     {
         if (array_key_exists($segment, $this->segments)) {
             return $this->segments[$segment];
@@ -336,7 +337,7 @@ class Odf
      *
      * @return false|string The requested variable of configuration
      */
-    public function getConfig($configKey)
+    public function getConfig(string $configKey)
     {
         if (array_key_exists($configKey, $this->config)) {
             return $this->config[$configKey];
@@ -349,7 +350,7 @@ class Odf
      *
      * @return string le chemin vers le fichier temporaire de travail
      */
-    public function getTmpfile()
+    public function getTmpfile(): string
     {
         return $this->tmpfile;
     }
@@ -357,6 +358,9 @@ class Odf
 
     /**
      * Recursive htmlspecialchars
+     *
+     * @param array<string, mixed>|string $value
+     * @return array<string, mixed>|string
      */
     protected function recursiveHtmlspecialchars($value)
     {

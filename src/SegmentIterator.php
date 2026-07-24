@@ -15,14 +15,17 @@ namespace Odtphp;
  * @copyright  GPL License 2008 - Julien Pauli - Cyril PIERRE de GEYER - Anaska (http://www.anaska.com)
  * @license    http://www.gnu.org/copyleft/gpl.html  GPL License
  * @version 1.3
+ * @implements \RecursiveIterator<string, \Odtphp\Segment>
  */
 class SegmentIterator implements \RecursiveIterator
 {
+    /** @var array<string, Segment> */
     private array $ref;
     private int $key;
     /** @var array<int|string> */
     private array $keys;
 
+    /** @param array<string, Segment> $ref */
     public function __construct(array $ref)
     {
         $this->ref = $ref;
@@ -30,27 +33,27 @@ class SegmentIterator implements \RecursiveIterator
         $this->keys = array_keys($this->ref);
     }
 
-    public function hasChildren()
+    public function hasChildren(): bool
     {
-        return $this->valid() && $this->current() instanceof Segment;
+        return $this->valid();
     }
 
-    public function current()
+    public function current(): Segment
     {
         return $this->ref[$this->keys[$this->key]];
     }
 
-    public function getChildren()
+    public function getChildren(): self
     {
-        return new self($this->current()->children);
+        return new self($this->current()->getChildren());
     }
 
-    public function key()
+    public function key(): string
     {
-        return $this->key;
+        return $this->keys[$this->key];
     }
 
-    public function valid()
+    public function valid(): bool
     {
         return array_key_exists($this->key, $this->keys);
     }
