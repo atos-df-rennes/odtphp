@@ -22,7 +22,7 @@ class SegmentIterator implements \RecursiveIterator
     /** @var array<string, Segment> */
     private array $ref;
     private int $key;
-    /** @var array<int|string> */
+    /** @var array<int, string> */
     private array $keys;
 
     /** @param array<string, Segment> $ref */
