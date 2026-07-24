@@ -65,19 +65,33 @@ class Odf
             throw new OdfException($this->config['ZIP_PROXY'] . ' class not found - check your php settings');
         }
         $zipHandler = $this->config['ZIP_PROXY'];
+
+        if (!is_subclass_of($zipHandler, ZipInterface::class)) {
+            throw new OdfException($this->config['ZIP_PROXY'] . ' class must implement ZipInterface');
+        }
+
         $this->file = new $zipHandler();
         if (!$this->file->open($filename)) {
             throw new OdfException("Error while Opening the file '$filename' - Check your odt file");
         }
-        if (($this->contentXml = $this->file->getFromName('content.xml')) === false) {
+
+        $contentXml = $this->file->getFromName('content.xml');
+        if (false === $contentXml) {
             throw new OdfException("Nothing to parse - check that the content.xml file is correctly formed");
         }
-        if (($this->stylesXml = $this->file->getFromName('styles.xml')) === false) {
+        $this->contentXml = $contentXml;
+
+        $stylesXml = $this->file->getFromName('styles.xml');
+        if (false === $stylesXml) {
             throw new OdfException("Nothing to parse - Check that the styles.xml file is correctly formed in source file '$filename'");
         }
-        if (($this->manifestXml = $this->file->getFromName('META-INF/manifest.xml')) === false) {
+        $this->stylesXml = $stylesXml;
+
+        $manifestXml = $this->file->getFromName('manifest.xml');
+        if (false === $manifestXml) {
             throw new OdfException("Something is wrong with META-INF/manifest.xm in source file '$filename'");
         }
+        $this->manifestXml = $manifestXml;
 
         $this->file->close();
 
@@ -134,8 +148,12 @@ class Odf
      */
     public function setImage($key, $value, $page = -1, $width = null, $height = null, $offsetX = null, $offsetY = null): self
     {
-        $filename = strtok(strrchr($value, '/'), '/.');
-        $file = substr(strrchr($value, '/'), 1);
+        $lastOccurrence = strrchr($value, '/');
+        if (false === $lastOccurrence) {
+            throw new OdfException('Needle "/" not found in path to the picture');
+        }
+        $filename = strtok($lastOccurrence, '/.');
+        $file = substr($lastOccurrence, 1);
         $size = @getimagesize($value);
         if ($size === false) {
             throw new OdfException("Invalid image");
@@ -294,7 +312,11 @@ class Odf
 
         //Enter all images description in $manifdata variable
         foreach ($this->manif_vars as $val) {
-            $ext = substr(strrchr($val, '.'), 1);
+            $lastOccurrence = strrchr($val, '.');
+            if (false === $lastOccurrence) {
+                throw new OdfException("'$val' is not a valid manifest file");
+            }
+            $ext = substr($lastOccurrence, 1);
             $manifdata = $manifdata . '<manifest:file-entry manifest:media-type="image/' . $ext . '" manifest:full-path="Pictures/' . $val . '"/>' . "\n";
         }
         //Place content of $manifdata variable in manifest.xml file at appropriate place
