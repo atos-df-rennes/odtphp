@@ -48,13 +48,7 @@ class PhpZipProxy implements ZipInterface
     {
         $this->filename = $filename;
 
-        $result = $this->zipArchive->open($filename, \ZipArchive::CREATE);
-
-        if (\is_int($result)) {
-            return false;
-        }
-
-        return $result;
+        return $this->zipArchive->open($filename, \ZipArchive::CREATE) === true;
     }
 
     /**
