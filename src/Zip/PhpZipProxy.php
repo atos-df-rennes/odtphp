@@ -23,7 +23,7 @@ use Odtphp\Exceptions\PhpZipProxyException;
 class PhpZipProxy implements ZipInterface
 {
     protected \ZipArchive $zipArchive;
-    protected ?string $filename;
+    protected ?string $filename = null;
 
     /**
      * Class constructor

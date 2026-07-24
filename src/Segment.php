@@ -50,8 +50,8 @@ class Segment implements \IteratorAggregate, \Countable
      */
     public function __construct(string $name, string $xml, $odf)
     {
-        $this->name = (string) $name;
-        $this->xml = (string) $xml;
+        $this->name = $name;
+        $this->xml = $xml;
         $this->odf = $odf;
         $zipHandler = $this->odf->getConfig('ZIP_PROXY');
         $this->file = new $zipHandler();
@@ -86,8 +86,6 @@ class Segment implements \IteratorAggregate, \Countable
 
     /**
      * Countable interface
-     *
-     * @return int
      */
     public function count(): int
     {
@@ -107,8 +105,6 @@ class Segment implements \IteratorAggregate, \Countable
     /**
      * Replace variables of the template in the XML code
      * All the children are also called
-     *
-     * @return string
      */
     public function merge(): string
     {
@@ -140,9 +136,6 @@ class Segment implements \IteratorAggregate, \Countable
 
     /**
      * Analyse the XML code in order to find children
-     *
-     * @param string $xml
-     * @return Segment
      */
     protected function _analyseChildren(string $xml): self
     {
@@ -162,10 +155,7 @@ class Segment implements \IteratorAggregate, \Countable
     /**
      * Assign a template variable to replace
      *
-     * @param string $key
-     * @param string $value
      * @throws SegmentException
-     * @return Segment
      */
     public function setVars(string $key, string $value, bool $encode = true, string $charset = 'ISO-8859'): self
     {
@@ -173,7 +163,7 @@ class Segment implements \IteratorAggregate, \Countable
             throw new SegmentException("var $key not found in {$this->getName()}");
         }
         $value = $encode ? htmlspecialchars($value) : $value;
-        $value = ($charset == 'ISO-8859') ? utf8_encode($value) : $value;
+        $value = ($charset === 'ISO-8859') ? utf8_encode($value) : $value;
         $this->vars[$this->odf->getConfig('DELIMITER_LEFT') . $key . $this->odf->getConfig('DELIMITER_RIGHT')] = str_replace("\n", "<text:line-break/>", $value);
         return $this;
     }
@@ -189,7 +179,6 @@ class Segment implements \IteratorAggregate, \Countable
      * @param string|null $offsetX offset by horizontal (not used if $page = -1)
      * @param string|null $offsetY offset by vertical (not used if $page = -1)
      * @throws OdfException
-     * @return Segment
      */
     public function setImage(string $key, string $value, ?int $page = null, ?int $width = null, ?int $height = null, ?string $offsetX = null, ?string $offsetY = null): self
     {
@@ -217,7 +206,6 @@ class Segment implements \IteratorAggregate, \Countable
     /**
      * Shortcut to retrieve a child
      *
-     * @return Segment
      * @throws SegmentException
      */
     public function __get(string $prop): self
@@ -248,8 +236,6 @@ class Segment implements \IteratorAggregate, \Countable
 
     /**
      * Returns the parsed XML
-     *
-     * @return string
      */
     public function getXmlParsed(): string
     {

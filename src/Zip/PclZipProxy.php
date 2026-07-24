@@ -23,8 +23,8 @@ class PclZipProxy implements ZipInterface
 {
     public const TMP_DIR = './tmp';
     protected bool $openned = false;
-    protected ?string $filename;
-    protected ?\PclZip $pclzip;
+    protected ?string $filename = null;
+    protected ?\PclZip $pclzip = null;
     /**
      * Class constructor
      *
@@ -44,7 +44,7 @@ class PclZipProxy implements ZipInterface
      */
     public function open($filename): bool
     {
-        if (true === $this->openned) {
+        if ($this->openned) {
             $this->close();
         }
         if (!file_exists(self::TMP_DIR)) {

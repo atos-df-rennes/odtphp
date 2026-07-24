@@ -66,7 +66,7 @@ class Odf
         }
         $zipHandler = $this->config['ZIP_PROXY'];
         $this->file = new $zipHandler();
-        if ($this->file->open($filename) !== true) {
+        if (!$this->file->open($filename)) {
             throw new OdfException("Error while Opening the file '$filename' - Check your odt file");
         }
         if (($this->contentXml = $this->file->getFromName('content.xml')) === false) {
@@ -114,7 +114,7 @@ class Odf
         // utf8_encode() must run before htmlspecialchars(), which expects
         // valid UTF-8 input: encoding after would feed it raw ISO-8859-1
         // bytes, causing it to silently drop or mangle accented characters.
-        $value = ($charset == 'ISO-8859') ? utf8_encode($value) : $value;
+        $value = ($charset === 'ISO-8859') ? utf8_encode($value) : $value;
         $value = $encode ? $this->recursiveHtmlspecialchars($value) : $value;
         $this->vars[$tag] = str_replace("\n", "<text:line-break/>", $value);
         return $this;
@@ -242,9 +242,7 @@ class Odf
     /**
      * Declare a segment in order to use it in a loop
      *
-     * @param string $segment
      * @throws OdfException
-     * @return Segment
      */
     public function setSegment(string $segment): Segment
     {
@@ -352,7 +350,7 @@ class Odf
      *
      * @return string le chemin vers le fichier temporaire de travail
      */
-    public function getTmpfile()
+    public function getTmpfile(): string
     {
         return $this->tmpfile;
     }

@@ -54,7 +54,6 @@ interface ZipInterface
 
     /**
      * Close the Zip archive
-     * @return bool
      */
     public function close(): bool;
 }
