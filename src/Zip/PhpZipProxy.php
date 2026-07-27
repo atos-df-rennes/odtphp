@@ -42,12 +42,13 @@ class PhpZipProxy implements ZipInterface
      * Open a Zip archive
      *
      * @param string $filename the name of the archive to open
-     * @return true if openning has succeeded
+     * @return bool true if openning has succeeded
      */
     public function open(string $filename): bool
     {
         $this->filename = $filename;
-        return $this->zipArchive->open($filename, \ZipArchive::CREATE);
+
+        return $this->zipArchive->open($filename, \ZipArchive::CREATE) === true;
     }
 
     /**
@@ -66,7 +67,7 @@ class PhpZipProxy implements ZipInterface
      *
      * @param string $localname the local path to the file in the archive
      * @param string $contents the content of the file
-     * @return bool if the file has been successful added
+     * @return bool true if the file has been successful added
      */
     public function addFromString(string $localname, string $contents): bool
     {
@@ -80,8 +81,8 @@ class PhpZipProxy implements ZipInterface
      * Add a file within the archive from a file
      *
      * @param string $filename the path to the file we want to add
-     * @param string $localname the local path to the file in the archive
-     * @return bool if the file has been successful added
+     * @param ?string $localname the local path to the file in the archive
+     * @return bool true if the file has been successful added
      */
     public function addFile(string $filename, ?string $localname = null): bool
     {

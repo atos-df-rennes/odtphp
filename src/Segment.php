@@ -2,7 +2,6 @@
 
 namespace Odtphp;
 
-use Odtphp\SegmentIterator;
 use Odtphp\Exceptions\SegmentException;
 use Odtphp\Exceptions\OdfException;
 use Odtphp\Zip\ZipInterface;
@@ -33,12 +32,11 @@ class Segment implements \IteratorAggregate, \Countable
     protected array $children = [];
     /** @var array<string, mixed> */
     protected array $vars = [];
-    /** @var array<string, mixed> */
+    /** @var array<int, string> */
     public array $manif_vars = [];
     /** @var array<string, mixed> */
     protected array $images = [];
-    /** @var object ODF document object (duck-typed) */
-    protected $odf;
+    protected OdfAwareDependency $odf;
     protected ZipInterface $file;
 
     /**
@@ -46,14 +44,15 @@ class Segment implements \IteratorAggregate, \Countable
      *
      * @param string $name name of the segment to construct
      * @param string $xml XML tree of the segment
-     * @param object $odf ODF document object (duck-typed: requires getConfig() and getTmpfile())
+     * @param OdfAwareDependency $odf ODF document object
      */
-    public function __construct(string $name, string $xml, $odf)
+    public function __construct(string $name, string $xml, OdfAwareDependency $odf)
     {
         $this->name = $name;
         $this->xml = $xml;
         $this->odf = $odf;
         $zipHandler = $this->odf->getConfig('ZIP_PROXY');
+        /** @var class-string<ZipInterface> $zipHandler */
         $this->file = new $zipHandler();
         $this->_analyseChildren($this->xml);
     }
@@ -182,8 +181,12 @@ class Segment implements \IteratorAggregate, \Countable
      */
     public function setImage(string $key, string $value, ?int $page = null, ?int $width = null, ?int $height = null, ?string $offsetX = null, ?string $offsetY = null): self
     {
-        $filename = strtok(strrchr($value, '/'), '/.');
-        $file = substr(strrchr($value, '/'), 1);
+        $lastSlash = strrchr($value, '/');
+        if ($lastSlash === false) {
+            throw new OdfException("Invalid image path: no directory separator found");
+        }
+        $filename = strtok($lastSlash, '/.');
+        $file = substr($lastSlash, 1);
         $size = @getimagesize($value);
         if ($size === false) {
             throw new OdfException("Invalid image");

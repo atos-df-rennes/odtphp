@@ -2,10 +2,8 @@
 
 namespace Odtphp;
 
-use Odtphp\Segment;
 use Odtphp\Exceptions\OdfException;
 use Odtphp\Zip\PclZipProxy;
-use Odtphp\Zip\PhpZipProxy;
 use Odtphp\Zip\ZipInterface;
 
 /**
@@ -22,12 +20,14 @@ use Odtphp\Zip\ZipInterface;
  * @copyright  GPL License 2008 - Julien Pauli - Cyril PIERRE de GEYER - Anaska (http://www.anaska.com)
  * @license    http://www.gnu.org/copyleft/gpl.html  GPL License
  * @version 1.3
+ *
+ * @phpstan-import-type OdfConfig from \Odtphp\OdfAwareDependency
  */
-class Odf
+class Odf implements OdfAwareDependency
 {
-    /** @var array<string, mixed> */
+    /** @var OdfConfig */
     protected array $config = [
-        'ZIP_PROXY' => \Odtphp\Zip\PclZipProxy::class,
+        'ZIP_PROXY' => PclZipProxy::class,
         'DELIMITER_LEFT' => '{',
         'DELIMITER_RIGHT' => '}',
         'PATH_TO_TMP' => null,
@@ -65,19 +65,33 @@ class Odf
             throw new OdfException($this->config['ZIP_PROXY'] . ' class not found - check your php settings');
         }
         $zipHandler = $this->config['ZIP_PROXY'];
+
+        if (!is_subclass_of($zipHandler, ZipInterface::class)) {
+            throw new OdfException($this->config['ZIP_PROXY'] . ' class must implement ZipInterface');
+        }
+
         $this->file = new $zipHandler();
         if (!$this->file->open($filename)) {
             throw new OdfException("Error while Opening the file '$filename' - Check your odt file");
         }
-        if (($this->contentXml = $this->file->getFromName('content.xml')) === false) {
+
+        $contentXml = $this->file->getFromName('content.xml');
+        if (false === $contentXml) {
             throw new OdfException("Nothing to parse - check that the content.xml file is correctly formed");
         }
-        if (($this->stylesXml = $this->file->getFromName('styles.xml')) === false) {
+        $this->contentXml = $contentXml;
+
+        $stylesXml = $this->file->getFromName('styles.xml');
+        if (false === $stylesXml) {
             throw new OdfException("Nothing to parse - Check that the styles.xml file is correctly formed in source file '$filename'");
         }
-        if (($this->manifestXml = $this->file->getFromName('META-INF/manifest.xml')) === false) {
+        $this->stylesXml = $stylesXml;
+
+        $manifestXml = $this->file->getFromName('META-INF/manifest.xml');
+        if (false === $manifestXml) {
             throw new OdfException("Something is wrong with META-INF/manifest.xm in source file '$filename'");
         }
+        $this->manifestXml = $manifestXml;
 
         $this->file->close();
 
@@ -115,7 +129,7 @@ class Odf
         // valid UTF-8 input: encoding after would feed it raw ISO-8859-1
         // bytes, causing it to silently drop or mangle accented characters.
         $value = ($charset === 'ISO-8859') ? utf8_encode($value) : $value;
-        $value = $encode ? $this->recursiveHtmlspecialchars($value) : $value;
+        $value = $encode ? htmlspecialchars($value) : $value;
         $this->vars[$tag] = str_replace("\n", "<text:line-break/>", $value);
         return $this;
     }
@@ -134,8 +148,12 @@ class Odf
      */
     public function setImage($key, $value, $page = -1, $width = null, $height = null, $offsetX = null, $offsetY = null): self
     {
-        $filename = strtok(strrchr($value, '/'), '/.');
-        $file = substr(strrchr($value, '/'), 1);
+        $lastOccurrence = strrchr($value, '/');
+        if (false === $lastOccurrence) {
+            throw new OdfException('Needle "/" not found in path to the picture');
+        }
+        $filename = strtok($lastOccurrence, '/.');
+        $file = substr($lastOccurrence, 1);
         $size = @getimagesize($value);
         if ($size === false) {
             throw new OdfException("Invalid image");
@@ -294,7 +312,11 @@ class Odf
 
         //Enter all images description in $manifdata variable
         foreach ($this->manif_vars as $val) {
-            $ext = substr(strrchr($val, '.'), 1);
+            $lastOccurrence = strrchr($val, '.');
+            if (false === $lastOccurrence) {
+                throw new OdfException("'$val' is not a valid manifest file");
+            }
+            $ext = substr($lastOccurrence, 1);
             $manifdata = $manifdata . '<manifest:file-entry manifest:media-type="image/' . $ext . '" manifest:full-path="Pictures/' . $val . '"/>' . "\n";
         }
         //Place content of $manifdata variable in manifest.xml file at appropriate place
@@ -332,11 +354,6 @@ class Odf
         readfile($this->tmpfile);
     }
 
-    /**
-     * Returns a variable of configuration
-     *
-     * @return false|string The requested variable of configuration
-     */
     public function getConfig(string $configKey)
     {
         if (array_key_exists($configKey, $this->config)) {
@@ -353,21 +370,5 @@ class Odf
     public function getTmpfile(): string
     {
         return $this->tmpfile;
-    }
-
-
-    /**
-     * Recursive htmlspecialchars
-     *
-     * @param array<string, mixed>|string $value
-     * @return array<string, mixed>|string
-     */
-    protected function recursiveHtmlspecialchars($value)
-    {
-        if (is_array($value)) {
-            return array_map([$this, 'recursiveHtmlspecialchars'], $value);
-        } else {
-            return htmlspecialchars($value);
-        }
     }
 }

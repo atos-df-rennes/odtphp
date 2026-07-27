@@ -4,6 +4,7 @@ namespace Odtphp\Test\Unit;
 
 use Odtphp\Exceptions\OdfException;
 use Odtphp\Exceptions\SegmentException;
+use Odtphp\OdfAwareDependency;
 use Odtphp\Segment;
 use Odtphp\Zip\PhpZipProxy;
 use PHPUnit\Framework\TestCase;
@@ -35,12 +36,12 @@ class SegmentTest extends TestCase
      * (no constructor property promotion, no match expression) to
      * stay PHP 7.4-compatible, per composer.json's "php": "^7.4.0".
      */
-    private function stubOdf(string $delimiterLeft = '{', string $delimiterRight = '}'): object
+    private function stubOdf(string $delimiterLeft = '{', string $delimiterRight = '}'): OdfAwareDependency
     {
         $tmpfile = tempnam(sys_get_temp_dir(), 'odtphp-segment-');
         $this->cleanupFiles[] = $tmpfile;
 
-        return new class ($tmpfile, $delimiterLeft, $delimiterRight) {
+        return new class ($tmpfile, $delimiterLeft, $delimiterRight) implements OdfAwareDependency {
             private string $tmpfile;
             private string $delimiterLeft;
             private string $delimiterRight;

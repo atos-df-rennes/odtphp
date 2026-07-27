@@ -40,7 +40,7 @@ class PclZipProxy implements ZipInterface
      * Open a Zip archive
      *
      * @param string $filename the name of the archive to open
-     * @return bool if openning has succeeded
+     * @return bool true if openning has succeeded
      */
     public function open($filename): bool
     {
@@ -80,7 +80,7 @@ class PclZipProxy implements ZipInterface
      *
      * @param string $localname the local path to the file in the archive
      * @param string $contents the content of the file
-     * @return bool if the file has been successful added
+     * @return bool true if the file has been successful added
      */
     public function addFromString(string $localname, string $contents): bool
     {
@@ -108,8 +108,8 @@ class PclZipProxy implements ZipInterface
      * Add a file within the archive from a file
      *
      * @param string $filename the path to the file we want to add
-     * @param string $localname the local path to the file in the archive
-     * @return bool if the file has been successful added
+     * @param ?string $localname the local path to the file in the archive
+     * @return bool true if the file has been successful added
      */
     public function addFile(string $filename, ?string $localname = null): bool
     {
@@ -155,7 +155,7 @@ class PclZipProxy implements ZipInterface
 
     /**
      * Empty the temporary working directory recursively
-     * @param $dir the temporary working directory
+     * @param string $dir the temporary working directory
      */
     private function _rrmdir(string $dir): void
     {
