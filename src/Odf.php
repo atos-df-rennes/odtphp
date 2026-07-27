@@ -95,7 +95,12 @@ class Odf implements OdfAwareDependency
 
         $this->file->close();
 
-        $tmp = tempnam($this->config['PATH_TO_TMP'], md5(uniqid()));
+        $pathToTmp = $this->config['PATH_TO_TMP'];
+        if (null === $pathToTmp) {
+            $pathToTmp = sys_get_temp_dir();
+        }
+
+        $tmp = tempnam($pathToTmp, md5(uniqid()));
         copy($filename, $tmp);
         $this->tmpfile = $tmp;
         $this->_moveRowSegments();
