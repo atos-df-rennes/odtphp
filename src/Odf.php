@@ -87,7 +87,7 @@ class Odf implements OdfAwareDependency
         }
         $this->stylesXml = $stylesXml;
 
-        $manifestXml = $this->file->getFromName('manifest.xml');
+        $manifestXml = $this->file->getFromName('META-INF/manifest.xml');
         if (false === $manifestXml) {
             throw new OdfException("Something is wrong with META-INF/manifest.xm in source file '$filename'");
         }
