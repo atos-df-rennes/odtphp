@@ -2,7 +2,6 @@
 
 namespace Odtphp;
 
-use Odtphp\SegmentIterator;
 use Odtphp\Exceptions\SegmentException;
 use Odtphp\Exceptions\OdfException;
 use Odtphp\Zip\ZipInterface;
@@ -37,8 +36,7 @@ class Segment implements \IteratorAggregate, \Countable
     public array $manif_vars = [];
     /** @var array<string, mixed> */
     protected array $images = [];
-    /** @var object ODF document object (duck-typed) */
-    protected $odf;
+    protected OdfAwareDependency $odf;
     protected ZipInterface $file;
 
     /**
@@ -46,9 +44,9 @@ class Segment implements \IteratorAggregate, \Countable
      *
      * @param string $name name of the segment to construct
      * @param string $xml XML tree of the segment
-     * @param object $odf ODF document object (duck-typed: requires getConfig() and getTmpfile())
+     * @param OdfAwareDependency $odf ODF document object
      */
-    public function __construct(string $name, string $xml, $odf)
+    public function __construct(string $name, string $xml, OdfAwareDependency $odf)
     {
         $this->name = $name;
         $this->xml = $xml;

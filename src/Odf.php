@@ -23,7 +23,7 @@ use Odtphp\Zip\ZipInterface;
  * @license    http://www.gnu.org/copyleft/gpl.html  GPL License
  * @version 1.3
  */
-class Odf
+class Odf implements OdfAwareDependency
 {
     /** @var array<string, mixed> */
     protected array $config = [
