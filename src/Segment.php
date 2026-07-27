@@ -32,7 +32,7 @@ class Segment implements \IteratorAggregate, \Countable
     protected array $children = [];
     /** @var array<string, mixed> */
     protected array $vars = [];
-    /** @var array<string, mixed> */
+    /** @var array<int, string> */
     public array $manif_vars = [];
     /** @var array<string, mixed> */
     protected array $images = [];
