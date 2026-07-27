@@ -181,8 +181,12 @@ class Segment implements \IteratorAggregate, \Countable
      */
     public function setImage(string $key, string $value, ?int $page = null, ?int $width = null, ?int $height = null, ?string $offsetX = null, ?string $offsetY = null): self
     {
-        $filename = strtok(strrchr($value, '/'), '/.');
-        $file = substr(strrchr($value, '/'), 1);
+        $lastSlash = strrchr($value, '/');
+        if ($lastSlash === false) {
+            throw new OdfException("Invalid image path: no directory separator found");
+        }
+        $filename = strtok($lastSlash, '/.');
+        $file = substr($lastSlash, 1);
         $size = @getimagesize($value);
         if ($size === false) {
             throw new OdfException("Invalid image");
