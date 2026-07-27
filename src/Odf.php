@@ -129,7 +129,7 @@ class Odf implements OdfAwareDependency
         // valid UTF-8 input: encoding after would feed it raw ISO-8859-1
         // bytes, causing it to silently drop or mangle accented characters.
         $value = ($charset === 'ISO-8859') ? utf8_encode($value) : $value;
-        $value = $encode ? $this->recursiveHtmlspecialchars($value) : $value;
+        $value = $encode ? htmlspecialchars($value) : $value;
         $this->vars[$tag] = str_replace("\n", "<text:line-break/>", $value);
         return $this;
     }
@@ -370,21 +370,5 @@ class Odf implements OdfAwareDependency
     public function getTmpfile(): string
     {
         return $this->tmpfile;
-    }
-
-
-    /**
-     * Recursive htmlspecialchars
-     *
-     * @param array<string, mixed>|string $value
-     * @return array<string, mixed>|string
-     */
-    protected function recursiveHtmlspecialchars($value)
-    {
-        if (is_array($value)) {
-            return array_map([$this, 'recursiveHtmlspecialchars'], $value);
-        } else {
-            return htmlspecialchars($value);
-        }
     }
 }
