@@ -228,7 +228,10 @@ class Odf implements OdfAwareDependency
         $string = $segment->getName();
         // $reg = '@<text:p[^>]*>\[!--\sBEGIN\s' . $string . '\s--\](.*)\[!--.+END\s' . $string . '\s--\]<\/text:p>@smU';
         $reg = '@\[!--\sBEGIN\s' . $string . '\s--\](.*)\[!--.+END\s' . $string . '\s--\]@smU';
-        $this->contentXml = preg_replace($reg, $segment->getXmlParsed(), $this->contentXml);
+        $replaced = preg_replace($reg, $segment->getXmlParsed(), $this->contentXml);
+        if (null !== $replaced) {
+            $this->contentXml = $replaced;
+        }
         foreach ($segment->manif_vars as $val) {
             $this->manif_vars[] = $val;   //copy all segment image names into current array
         }

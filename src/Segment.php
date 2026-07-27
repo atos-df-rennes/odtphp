@@ -121,7 +121,10 @@ class Segment implements \IteratorAggregate, \Countable
             }
         }
         $reg = "/\[!--\sBEGIN\s$this->name\s--\](.*)\[!--\sEND\s$this->name\s--\]/smU";
-        $this->xmlParsed = preg_replace($reg, '$1', $this->xmlParsed);
+        $replaced = preg_replace($reg, '$1', $this->xmlParsed);
+        if (null !== $replaced) {
+            $this->xmlParsed = $replaced;
+        }
         $this->file->open($this->odf->getTmpfile());
         foreach ($this->images as $imageKey => $imageValue) {
             if ($this->file->getFromName('Pictures/' . $imageValue) === false) {
