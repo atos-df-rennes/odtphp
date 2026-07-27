@@ -2,10 +2,8 @@
 
 namespace Odtphp;
 
-use Odtphp\Segment;
 use Odtphp\Exceptions\OdfException;
 use Odtphp\Zip\PclZipProxy;
-use Odtphp\Zip\PhpZipProxy;
 use Odtphp\Zip\ZipInterface;
 
 /**
@@ -22,12 +20,14 @@ use Odtphp\Zip\ZipInterface;
  * @copyright  GPL License 2008 - Julien Pauli - Cyril PIERRE de GEYER - Anaska (http://www.anaska.com)
  * @license    http://www.gnu.org/copyleft/gpl.html  GPL License
  * @version 1.3
+ *
+ * @phpstan-import-type OdfConfig from \Odtphp\OdfAwareDependency
  */
 class Odf implements OdfAwareDependency
 {
-    /** @var array<string, mixed> */
+    /** @var OdfConfig */
     protected array $config = [
-        'ZIP_PROXY' => \Odtphp\Zip\PclZipProxy::class,
+        'ZIP_PROXY' => PclZipProxy::class,
         'DELIMITER_LEFT' => '{',
         'DELIMITER_RIGHT' => '}',
         'PATH_TO_TMP' => null,
@@ -354,11 +354,6 @@ class Odf implements OdfAwareDependency
         readfile($this->tmpfile);
     }
 
-    /**
-     * Returns a variable of configuration
-     *
-     * @return false|string The requested variable of configuration
-     */
     public function getConfig(string $configKey)
     {
         if (array_key_exists($configKey, $this->config)) {
