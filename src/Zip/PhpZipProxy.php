@@ -71,7 +71,7 @@ class PhpZipProxy implements ZipInterface
      */
     public function addFromString(string $localname, string $contents): bool
     {
-        if (file_exists($this->filename) && !is_writable($this->filename)) {
+        if (null !== $this->filename && file_exists($this->filename) && !is_writable($this->filename)) {
             return false;
         }
         return $this->zipArchive->addFromString($localname, $contents);
@@ -86,9 +86,12 @@ class PhpZipProxy implements ZipInterface
      */
     public function addFile(string $filename, ?string $localname = null): bool
     {
-        if ((file_exists($this->filename) && !is_writable($this->filename))
+        if ((null !== $this->filename && file_exists($this->filename) && !is_writable($this->filename))
             || !file_exists($filename)) {
             return false;
+        }
+        if (null === $localname) {
+            return $this->zipArchive->addFile($filename);
         }
         return $this->zipArchive->addFile($filename, $localname);
     }

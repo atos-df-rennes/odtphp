@@ -64,7 +64,7 @@ class PclZipProxy implements ZipInterface
      */
     public function getFromName(string $name)
     {
-        if (false === $this->openned) {
+        if (false === $this->openned || null === $this->pclzip) {
             return false;
         }
         $name = preg_replace("/(?:\.|\/)*(.*)/", "\\1", $name);
@@ -84,13 +84,16 @@ class PclZipProxy implements ZipInterface
      */
     public function addFromString(string $localname, string $contents): bool
     {
-        if (false === $this->openned) {
+        if (false === $this->openned || null === $this->filename || null === $this->pclzip) {
             return false;
         }
         if (file_exists($this->filename) && !is_writable($this->filename)) {
             return false;
         }
         $localname = preg_replace("/(?:\.|\/)*(.*)/", "\\1", $localname);
+        if (null === $localname) {
+            return false;
+        }
         $localpath = dirname($localname);
         $tmpfilename = self::TMP_DIR . '/' . basename($localname);
         if (false !== file_put_contents($tmpfilename, $contents)) {
@@ -113,7 +116,7 @@ class PclZipProxy implements ZipInterface
      */
     public function addFile(string $filename, ?string $localname = null): bool
     {
-        if (false === $this->openned) {
+        if (false === $this->openned || null === $this->filename || null === $this->pclzip) {
             return false;
         }
         if ((file_exists($this->filename) && !is_writable($this->filename))
@@ -122,6 +125,9 @@ class PclZipProxy implements ZipInterface
         }
         if (isset($localname)) {
             $localname = preg_replace("/(?:\.|\/)*(.*)/", "\\1", $localname);
+            if (null === $localname) {
+                return false;
+            }
             $localpath = dirname($localname);
             $tmpfilename = self::TMP_DIR . '/' . basename($localname);
         } else {
