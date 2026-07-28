@@ -14,15 +14,15 @@ jobs:
       matrix:
         php: ['7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5']
         include:
-          # PHP 7.4 and 8.0 (both allowed by composer.json requirement) are required to pass today.
+          # PHP 7.4, 8.0 and 8.1 (all allowed by composer.json requirement) are required to pass today.
           # Each remaining 8.x leg is promoted from allow-failure to required individually once verified green
-          # (see session plan: Phase 4/5 - incremental linter level-up & PHP 8.0 readiness).
+          # (see session plan: Phase 4/5 - incremental linter level-up & PHP 8+ readiness).
           - php: '7.4'
             allow-failure: false
           - php: '8.0'
             allow-failure: false
           - php: '8.1'
-            allow-failure: true
+            allow-failure: false
           - php: '8.2'
             allow-failure: true
           - php: '8.3'
