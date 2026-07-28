@@ -32,13 +32,19 @@ class SegmentTest extends TestCase
      * configuration accessor and a valid, writable temporary zip file
      * (Segment::merge() opens/closes it, even with no images to add).
      *
+     * Uses a copy of a fixture .odt file instead of an empty temp file
+     * to avoid PHP 8.1+ deprecation when ZipArchive::open() is called
+     * on an empty file.
+     *
      * Uses classic property declarations + constructor assignment
      * (no constructor property promotion, no match expression) to
      * stay PHP 7.4-compatible, per composer.json's "php": "^7.4.0".
      */
     private function stubOdf(string $delimiterLeft = '{', string $delimiterRight = '}'): OdfAwareDependency
     {
-        $tmpfile = tempnam(sys_get_temp_dir(), 'odtphp-segment-');
+        $fixture = __DIR__ . '/../Fixtures/odt/tutoriel1.odt';
+        $tmpfile = tempnam(sys_get_temp_dir(), 'odtphp-segment-') . '.zip';
+        copy($fixture, $tmpfile);
         $this->cleanupFiles[] = $tmpfile;
 
         return new class ($tmpfile, $delimiterLeft, $delimiterRight) implements OdfAwareDependency {
