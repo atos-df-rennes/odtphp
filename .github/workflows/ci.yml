@@ -66,8 +66,8 @@ jobs:
         continue-on-error: ${{ matrix.allow-failure }}
         run: composer analyse
 
-      - name: PHP-CS-Fixer (dry-run)
-        if: steps.install.outcome == 'success'
+      - name: PHP-CS-Fixer (dry-run, use minimum PHP version supported)
+        if: steps.install.outcome == 'success' && matrix.php == '7.4'
         continue-on-error: ${{ matrix.allow-failure }}
         run: vendor/bin/php-cs-fixer fix --dry-run --diff
 
