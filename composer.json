@@ -9,7 +9,7 @@
     "type": "library",
     "homepage": "https://github.com/atos-df-rennes/odtphp",
     "require": {
-        "php": ">=7.4,<8.5",
+        "php": "^7.4|^8.0",
         "ext-mbstring": "*"
     },
     "require-dev": {
