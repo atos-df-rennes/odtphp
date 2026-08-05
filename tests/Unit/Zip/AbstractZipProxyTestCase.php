@@ -30,7 +30,7 @@ abstract class AbstractZipProxyTestCase extends TestCase
     {
         foreach ($this->cleanupFiles as $file) {
             if (file_exists($file)) {
-                @chmod($file, 0644);
+                @chmod($file, 0o644);
                 unlink($file);
             }
         }
@@ -115,7 +115,7 @@ abstract class AbstractZipProxyTestCase extends TestCase
     public function testAddFromStringOnNonWritableTargetReturnsFalse(): void
     {
         $archive = $this->newWorkingArchive();
-        chmod($archive, 0444);
+        chmod($archive, 0o444);
         $proxy = $this->createProxy();
         $proxy->open($archive);
 
@@ -133,7 +133,7 @@ abstract class AbstractZipProxyTestCase extends TestCase
     public function testAddFileOnNonWritableTargetReturnsFalse(): void
     {
         $archive = $this->newWorkingArchive();
-        chmod($archive, 0444);
+        chmod($archive, 0o444);
         $proxy = $this->createProxy();
         $proxy->open($archive);
 

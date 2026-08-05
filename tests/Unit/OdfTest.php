@@ -26,7 +26,7 @@ class OdfTest extends TestCase
     {
         foreach ($this->cleanupFiles as $file) {
             if (file_exists($file)) {
-                @chmod($file, 0644);
+                @chmod($file, 0o644);
                 unlink($file);
             }
         }
@@ -324,7 +324,7 @@ class OdfTest extends TestCase
 
         $target = $this->tempOdtPath();
         touch($target);
-        chmod($target, 0444);
+        chmod($target, 0o444);
 
         $this->expectException(OdfException::class);
         $this->expectExceptionMessage("Permission denied : can't create");
@@ -441,14 +441,12 @@ class OdfTest extends TestCase
         $reflection = new \ReflectionClass($odf);
 
         $contentXmlProperty = $reflection->getProperty('contentXml');
-        $contentXmlProperty->setAccessible(true);
         $contentXmlProperty->setValue(
             $odf,
             '<table:table-row attr="x">[!-- BEGIN row.item --]<text:p>{item}</text:p>[!-- END row.item --]</table:table-row>'
         );
 
         $moveRowSegments = $reflection->getMethod('_moveRowSegments');
-        $moveRowSegments->setAccessible(true);
         $moveRowSegments->invoke($odf);
 
         self::assertSame(

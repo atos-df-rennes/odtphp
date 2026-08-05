@@ -48,29 +48,16 @@ class SegmentTest extends TestCase
         $this->cleanupFiles[] = $tmpfile;
 
         return new class ($tmpfile, $delimiterLeft, $delimiterRight) implements OdfAwareDependency {
-            private string $tmpfile;
-            private string $delimiterLeft;
-            private string $delimiterRight;
+            public function __construct(private readonly string $tmpfile, private readonly string $delimiterLeft, private readonly string $delimiterRight) {}
 
-            public function __construct(string $tmpfile, string $delimiterLeft, string $delimiterRight)
+            public function getConfig($configKey): string|false
             {
-                $this->tmpfile = $tmpfile;
-                $this->delimiterLeft = $delimiterLeft;
-                $this->delimiterRight = $delimiterRight;
-            }
-
-            public function getConfig($configKey)
-            {
-                switch ($configKey) {
-                    case 'ZIP_PROXY':
-                        return PhpZipProxy::class;
-                    case 'DELIMITER_LEFT':
-                        return $this->delimiterLeft;
-                    case 'DELIMITER_RIGHT':
-                        return $this->delimiterRight;
-                    default:
-                        return false;
-                }
+                return match ($configKey) {
+                    'ZIP_PROXY' => PhpZipProxy::class,
+                    'DELIMITER_LEFT' => $this->delimiterLeft,
+                    'DELIMITER_RIGHT' => $this->delimiterRight,
+                    default => false,
+                };
             }
 
             public function getTmpfile(): string
