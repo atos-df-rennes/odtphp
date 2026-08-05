@@ -363,7 +363,7 @@ class Odf implements OdfAwareDependency, \Stringable
         readfile($this->tmpfile);
     }
 
-    public function getConfig(string $configKey): string|null|false
+    public function getConfig(string $configKey): string|false|null
     {
         if (array_key_exists($configKey, $this->config)) {
             return $this->config[$configKey];

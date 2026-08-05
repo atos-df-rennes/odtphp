@@ -48,9 +48,7 @@ class SegmentTest extends TestCase
         $this->cleanupFiles[] = $tmpfile;
 
         return new class ($tmpfile, $delimiterLeft, $delimiterRight) implements OdfAwareDependency {
-            public function __construct(private readonly string $tmpfile, private readonly string $delimiterLeft, private readonly string $delimiterRight)
-            {
-            }
+            public function __construct(private readonly string $tmpfile, private readonly string $delimiterLeft, private readonly string $delimiterRight) {}
 
             public function getConfig($configKey): string|false
             {
