@@ -71,3 +71,7 @@ jobs:
         if: steps.install.outcome == 'success'
         continue-on-error: ${{ matrix.allow-failure }}
         run: composer test
+
+      - name: Check if no package requires an update (use minimum PHP version supported)
+        if: steps.install.outcome == 'success' && matrix.php == '8.2'
+        run: vendor/bin/jack breakpoint --limit 3
