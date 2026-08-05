@@ -25,9 +25,7 @@ use Odtphp\Zip\ZipInterface;
  */
 class Segment implements \IteratorAggregate, \Countable
 {
-    protected string $xml;
     protected string $xmlParsed = '';
-    protected string $name;
     /** @var array<string, Segment> */
     protected array $children = [];
     /** @var array<string, mixed> */
@@ -36,7 +34,6 @@ class Segment implements \IteratorAggregate, \Countable
     public array $manif_vars = [];
     /** @var array<string, mixed> */
     protected array $images = [];
-    protected OdfAwareDependency $odf;
     protected ZipInterface $file;
 
     /**
@@ -46,11 +43,8 @@ class Segment implements \IteratorAggregate, \Countable
      * @param string $xml XML tree of the segment
      * @param OdfAwareDependency $odf ODF document object
      */
-    public function __construct(string $name, string $xml, OdfAwareDependency $odf)
+    public function __construct(protected string $name, protected string $xml, protected OdfAwareDependency $odf)
     {
-        $this->name = $name;
-        $this->xml = $xml;
-        $this->odf = $odf;
         $zipHandler = $this->odf->getConfig('ZIP_PROXY');
         /** @var class-string<ZipInterface> $zipHandler */
         $this->file = new $zipHandler();
@@ -161,7 +155,7 @@ class Segment implements \IteratorAggregate, \Countable
      */
     public function setVars(string $key, string $value, bool $encode = true, string $charset = 'ISO-8859'): self
     {
-        if (strpos($this->xml, $this->odf->getConfig('DELIMITER_LEFT') . $key . $this->odf->getConfig('DELIMITER_RIGHT')) === false) {
+        if (!str_contains($this->xml, $this->odf->getConfig('DELIMITER_LEFT') . $key . $this->odf->getConfig('DELIMITER_RIGHT'))) {
             throw new SegmentException("var $key not found in {$this->getName()}");
         }
         // mb_convert_encoding() must run before htmlspecialchars(), which expects
@@ -240,7 +234,7 @@ class Segment implements \IteratorAggregate, \Countable
     {
         try {
             array_unshift($args, $meth);
-            return call_user_func_array([$this, 'setVars'], $args);
+            return call_user_func_array($this->setVars(...), $args);
         } catch (SegmentException $e) {
             throw new SegmentException("method $meth nor var $meth exist", $e->getCode(), $e);
         }

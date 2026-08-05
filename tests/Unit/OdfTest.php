@@ -441,14 +441,12 @@ class OdfTest extends TestCase
         $reflection = new \ReflectionClass($odf);
 
         $contentXmlProperty = $reflection->getProperty('contentXml');
-        $contentXmlProperty->setAccessible(true);
         $contentXmlProperty->setValue(
             $odf,
             '<table:table-row attr="x">[!-- BEGIN row.item --]<text:p>{item}</text:p>[!-- END row.item --]</table:table-row>'
         );
 
         $moveRowSegments = $reflection->getMethod('_moveRowSegments');
-        $moveRowSegments->setAccessible(true);
         $moveRowSegments->invoke($odf);
 
         self::assertSame(

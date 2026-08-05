@@ -23,7 +23,7 @@ use Odtphp\Zip\ZipInterface;
  *
  * @phpstan-import-type OdfConfig from \Odtphp\OdfAwareDependency
  */
-class Odf implements OdfAwareDependency
+class Odf implements OdfAwareDependency, \Stringable
 {
     /** @var OdfConfig */
     protected array $config = [
@@ -127,7 +127,7 @@ class Odf implements OdfAwareDependency
     public function setVars(string $key, string $value, bool $encode = true, string $charset = 'ISO-8859'): self
     {
         $tag = $this->config['DELIMITER_LEFT'] . $key . $this->config['DELIMITER_RIGHT'];
-        if (strpos($this->contentXml, $tag) === false && strpos($this->stylesXml, $tag) === false) {
+        if (!str_contains($this->contentXml, $tag) && !str_contains($this->stylesXml, $tag)) {
             throw new OdfException("var $key not found in the document");
         }
         // mb_convert_encoding() must run before htmlspecialchars(), which expects
@@ -252,10 +252,8 @@ class Odf implements OdfAwareDependency
     /**
      * Display the XML content of the file from odt document
      * as it is at the moment
-     *
-     * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->contentXml;
     }
@@ -365,7 +363,7 @@ class Odf implements OdfAwareDependency
         readfile($this->tmpfile);
     }
 
-    public function getConfig(string $configKey)
+    public function getConfig(string $configKey): string|null|false
     {
         if (array_key_exists($configKey, $this->config)) {
             return $this->config[$configKey];

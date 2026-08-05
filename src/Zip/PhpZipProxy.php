@@ -57,7 +57,7 @@ class PhpZipProxy implements ZipInterface
      * @param string $name the name of the file to extract
      * @return false|string the content of the file in a string
      */
-    public function getFromName(string $name)
+    public function getFromName(string $name): string|false
     {
         return $this->zipArchive->getFromName($name);
     }
