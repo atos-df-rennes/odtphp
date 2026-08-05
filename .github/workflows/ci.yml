@@ -71,3 +71,9 @@ jobs:
         if: steps.install.outcome == 'success'
         continue-on-error: ${{ matrix.allow-failure }}
         run: composer test
+
+      - name: Check if no package requires an update (use minimum PHP version supported)
+        if: steps.install.outcome == 'success' && matrix.php == '8.2'
+        # This line should be removed when upgrading to a PHP version that supports rector/jack:^1.1
+        continue-on-error: true
+        run: vendor/bin/jack breakpoint --limit 3
