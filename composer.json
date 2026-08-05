@@ -18,7 +18,8 @@
         "phpstan/extension-installer": "^1.3",
         "rector/rector": "^2.0",
         "friendsofphp/php-cs-fixer": "^3.56",
-        "symfony/var-dumper": "^7.0"
+        "symfony/var-dumper": "^7.0",
+        "rector/jack": "^1.0"
     },
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse --memory-limit=-1",
