@@ -24,7 +24,7 @@ interface OdfAwareDependency
      * Get a configuration value by key.
      *
      * Supported configuration keys and their types:
-     * - 'ZIP_PROXY': Returns a class-string for the ZIP handler (PhpZipProxy or PclZipProxy)
+     * - 'ZIP_PROXY': Returns a class-string for the ZIP handler (default: PhpZipProxy; PclZipProxy is also available)
      * - 'DELIMITER_LEFT': Returns the left delimiter string (default: '{')
      * - 'DELIMITER_RIGHT': Returns the right delimiter string (default: '}')
      * - 'PATH_TO_TMP': Returns the temporary directory path or null (default: null)

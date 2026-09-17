@@ -4494,10 +4494,20 @@ class PclZip
         }
 
         // ----- Look for flag bit 3
+        // Patched (odtphp): once CRC/size are known and copied from the central
+        // directory, the bit-3 flag ("values in a trailing data descriptor")
+        // must be cleared on both headers. Otherwise, when this entry is later
+        // rewritten (e.g. by privDeleteByRule()), the resulting local header
+        // still announces a data descriptor that is never actually written,
+        // producing a structurally invalid ZIP archive. Recent readers (e.g.
+        // LibreOffice >= 25) reject such archives and prompt to repair them,
+        // while older/lenient readers silently accepted them.
         if (($p_local_header['flag'] & 8) == 8) {
             $p_local_header['size'] = $p_central_header['size'];
             $p_local_header['compressed_size'] = $p_central_header['compressed_size'];
             $p_local_header['crc'] = $p_central_header['crc'];
+            $p_local_header['flag'] &= ~8;
+            $p_central_header['flag'] &= ~8;
         }
 
         // ----- Return

@@ -5,7 +5,6 @@ namespace Odtphp\Test\Unit;
 use Odtphp\Exceptions\OdfException;
 use Odtphp\Odf;
 use Odtphp\Segment;
-use Odtphp\Zip\PclZipProxy;
 use Odtphp\Zip\PhpZipProxy;
 use PHPUnit\Framework\TestCase;
 
@@ -96,11 +95,11 @@ class OdfTest extends TestCase
         new Odf(self::FIXTURE_ODT, ['ZIP_PROXY' => 'NoSuchZipProxy']);
     }
 
-    public function testDefaultZipProxyIsPclZip(): void
+    public function testDefaultZipProxyIsPhpZip(): void
     {
         $odf = new Odf(self::FIXTURE_ODT);
 
-        self::assertSame(PclZipProxy::class, $odf->getConfig('ZIP_PROXY'));
+        self::assertSame(PhpZipProxy::class, $odf->getConfig('ZIP_PROXY'));
     }
 
     // --- getConfig ------------------------------------------------------

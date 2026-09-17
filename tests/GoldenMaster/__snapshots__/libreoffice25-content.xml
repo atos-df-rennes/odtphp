@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<office:document-content xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:rpt="http://openoffice.org/2005/report" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:css3t="http://www.w3.org/TR/css3-text/" xmlns:officeooo="http://openoffice.org/2009/office" office:version="1.4">
+  <office:scripts/>
+  <office:font-face-decls>
+    <style:font-face style:name="0" svg:font-family="0" style:font-family-generic="roman" style:font-pitch="variable"/>
+    <style:font-face style:name="Arial" svg:font-family="Arial" style:font-family-generic="swiss" style:font-pitch="variable"/>
+    <style:font-face style:name="Arial1" svg:font-family="Arial" style:font-adornments="Normal" style:font-family-generic="swiss" style:font-pitch="variable"/>
+    <style:font-face style:name="Calibri" svg:font-family="Calibri" style:font-family-generic="roman" style:font-pitch="variable"/>
+    <style:font-face style:name="Comic Sans MS" svg:font-family="'Comic Sans MS'" style:font-family-generic="roman" style:font-pitch="variable"/>
+    <style:font-face style:name="Comic Sans MS1" svg:font-family="'Comic Sans MS'" style:font-family-generic="script" style:font-pitch="variable"/>
+    <style:font-face style:name="Courier New" svg:font-family="'Courier New'" style:font-family-generic="modern" style:font-pitch="fixed"/>
+    <style:font-face style:name="Liberation Sans" svg:font-family="'Liberation Sans'" style:font-family-generic="swiss" style:font-pitch="variable"/>
+    <style:font-face style:name="MS Mincho" svg:font-family="'MS Mincho'" style:font-family-generic="system" style:font-pitch="variable"/>
+    <style:font-face style:name="OpenSymbol" svg:font-family="OpenSymbol" style:font-charset="x-symbol"/>
+    <style:font-face style:name="Symbol" svg:font-family="Symbol" style:font-family-generic="roman" style:font-pitch="variable" style:font-charset="x-symbol"/>
+    <style:font-face style:name="Tahoma" svg:font-family="Tahoma" style:font-family-generic="system" style:font-pitch="variable"/>
+    <style:font-face style:name="Times New Roman" svg:font-family="'Times New Roman'" style:font-family-generic="roman" style:font-pitch="variable"/>
+    <style:font-face style:name="Verdana" svg:font-family="Verdana" style:font-family-generic="swiss" style:font-pitch="variable"/>
+    <style:font-face style:name="Wingdings" svg:font-family="Wingdings" style:font-family-generic="system" style:font-pitch="variable" style:font-charset="x-symbol"/>
+  </office:font-face-decls>
+  <office:automatic-styles>
+    <style:style style:name="Tableau15" style:family="table">
+      <style:table-properties style:width="16cm" table:align="margins"/>
+    </style:style>
+    <style:style style:name="Tableau15.A" style:family="table-column">
+      <style:table-column-properties style:column-width="4.001cm" style:rel-column-width="16383*"/>
+    </style:style>
+    <style:style style:name="Tableau15.D" style:family="table-column">
+      <style:table-column-properties style:column-width="4.001cm" style:rel-column-width="16386*"/>
+    </style:style>
+    <style:style style:name="Tableau15.A1" style:family="table-cell">
+      <style:table-cell-properties fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="none" fo:border-top="0.05pt solid #000000" fo:border-bottom="0.05pt solid #000000"/>
+    </style:style>
+    <style:style style:name="Tableau15.D1" style:family="table-cell">
+      <style:table-cell-properties fo:padding="0.097cm" fo:border="0.05pt solid #000000"/>
+    </style:style>
+    <style:style style:name="Tableau1" style:family="table">
+      <style:table-properties style:width="16cm" table:align="margins"/>
+    </style:style>
+    <style:style style:name="Tableau1.A" style:family="table-column">
+      <style:table-column-properties style:column-width="4.001cm" style:rel-column-width="16383*"/>
+    </style:style>
+    <style:style style:name="Tableau1.D" style:family="table-column">
+      <style:table-column-properties style:column-width="4.001cm" style:rel-column-width="16386*"/>
+    </style:style>
+    <style:style style:name="Tableau1.A1" style:family="table-cell">
+      <style:table-cell-properties fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="none" fo:border-top="0.05pt solid #000000" fo:border-bottom="0.05pt solid #000000"/>
+    </style:style>
+    <style:style style:name="Tableau1.D1" style:family="table-cell">
+      <style:table-cell-properties fo:padding="0.097cm" fo:border="0.05pt solid #000000"/>
+    </style:style>
+    <style:style style:name="Tableau3" style:family="table">
+      <style:table-properties style:width="16cm" fo:break-before="auto" fo:break-after="auto" table:align="margins" fo:background-color="transparent" fo:keep-with-next="auto" style:may-break-between-rows="true" style:writing-mode="page">
+        <style:background-image/>
+      </style:table-properties>
+    </style:style>
+    <style:style style:name="Tableau3.A" style:family="table-column">
+      <style:table-column-properties style:column-width="4.001cm" style:rel-column-width="16383*"/>
+    </style:style>
+    <style:style style:name="Tableau3.D" style:family="table-column">
+      <style:table-column-properties style:column-width="4.001cm" style:rel-column-width="16386*"/>
+    </style:style>
+    <style:style style:name="Tableau3.1" style:family="table-row">
+      <style:table-row-properties fo:background-color="transparent" fo:keep-together="auto">
+        <style:background-image/>
+      </style:table-row-properties>
+    </style:style>
+    <style:style style:name="Tableau3.A1" style:family="table-cell">
+      <style:table-cell-properties style:vertical-align="" fo:background-color="transparent" fo:padding="0.097cm" fo:border-left="0.05pt solid #000000" fo:border-right="none" fo:border-top="0.05pt solid #000000" fo:border-bottom="0.05pt solid #000000" style:writing-mode="page">
+        <style:background-image/>
+      </style:table-cell-properties>
+    </style:style>
+    <style:style style:name="Tableau3.D1" style:family="table-cell">
+      <style:table-cell-properties style:vertical-align="" fo:background-color="transparent" fo:padding="0.097cm" fo:border="0.05pt solid #000000" style:writing-mode="page">
+        <style:background-image/>
+      </style:table-cell-properties>
+    </style:style>
+    <style:style style:name="Tableau2" style:family="table">
+      <style:table-properties style:width="16.002cm" fo:margin-left="0cm" fo:margin-right="-0.002cm" table:align="margins"/>
+    </style:style>
+    <style:style style:name="Tableau2.A" style:family="table-column">
+      <style:table-column-properties style:column-width="1.508cm" style:rel-column-width="6176*"/>
+    </style:style>
+    <style:style style:name="Tableau2.B" style:family="table-column">
+      <style:table-column-properties style:column-width="4.392cm" style:rel-column-width="17987*"/>
+    </style:style>
+    <style:style style:name="Tableau2.C" style:family="table-column">
+      <style:table-column-properties style:column-width="10.102cm" style:rel-column-width="41372*"/>
+    </style:style>
+    <style:style style:name="Tableau2.A1" style:family="table-cell">
+      <style:table-cell-properties fo:padding="0.097cm" fo:border="none"/>
+    </style:style>
+    <style:style style:name="Tableau4" style:family="table">
+      <style:table-properties style:width="16.002cm" fo:margin-left="0cm" fo:margin-right="-0.002cm" table:align="margins"/>
+    </style:style>
+    <style:style style:name="Tableau4.A" style:family="table-column">
+      <style:table-column-properties style:column-width="1.508cm" style:rel-column-width="6176*"/>
+    </style:style>
+    <style:style style:name="Tableau4.B" style:family="table-column">
+      <style:table-column-properties style:column-width="4.392cm" style:rel-column-width="17987*"/>
+    </style:style>
+    <style:style style:name="Tableau4.C" style:family="table-column">
+      <style:table-column-properties style:column-width="10.102cm" style:rel-column-width="41372*"/>
+    </style:style>
+    <style:style style:name="Tableau4.A1" style:family="table-cell">
+      <style:table-cell-properties fo:padding="0.097cm" fo:border="none"/>
+    </style:style>
+    <style:style style:name="Tableau5" style:family="table">
+      <style:table-properties style:width="16.002cm" fo:margin-left="0cm" fo:margin-right="-0.002cm" table:align="margins"/>
+    </style:style>
+    <style:style style:name="Tableau5.A" style:family="table-column">
+      <style:table-column-properties style:column-width="1.508cm" style:rel-column-width="6176*"/>
+    </style:style>
+    <style:style style:name="Tableau5.B" style:family="table-column">
+      <style:table-column-properties style:column-width="4.392cm" style:rel-column-width="17987*"/>
+    </style:style>
+    <style:style style:name="Tableau5.C" style:family="table-column">
+      <style:table-column-properties style:column-width="10.102cm" style:rel-column-width="41372*"/>
+    </style:style>
+    <style:style style:name="Tableau5.A1" style:family="table-cell">
+      <style:table-cell-properties fo:padding="0.097cm" fo:border="none"/>
+    </style:style>
+    <style:style style:name="Tableau6" style:family="table">
+      <style:table-properties style:width="16.002cm" fo:margin-left="0cm" fo:margin-right="-0.002cm" table:align="margins"/>
+    </style:style>
+    <style:style style:name="Tableau6.A" style:family="table-column">
+      <style:table-column-properties style:column-width="1.508cm" style:rel-column-width="6176*"/>
+    </style:style>
+    <style:style style:name="Tableau6.B" style:family="table-column">
+      <style:table-column-properties style:column-width="4.392cm" style:rel-column-width="17987*"/>
+    </style:style>
+    <style:style style:name="Tableau6.C" style:family="table-column">
+      <style:table-column-properties style:column-width="10.102cm" style:rel-column-width="41372*"/>
+    </style:style>
+    <style:style style:name="Tableau6.A1" style:family="table-cell">
+      <style:table-cell-properties fo:padding="0.097cm" fo:border="none"/>
+    </style:style>
+    <style:style style:name="Tableau7" style:family="table">
+      <style:table-properties style:width="16.002cm" fo:margin-left="0cm" fo:margin-right="-0.002cm" table:align="margins"/>
+    </style:style>
+    <style:style style:name="Tableau7.A" style:family="table-column">
+      <style:table-column-properties style:column-width="1.508cm" style:rel-column-width="6176*"/>
+    </style:style>
+    <style:style style:name="Tableau7.B" style:family="table-column">
+      <style:table-column-properties style:column-width="4.392cm" style:rel-column-width="17987*"/>
+    </style:style>
+    <style:style style:name="Tableau7.C" style:family="table-column">
+      <style:table-column-properties style:column-width="10.102cm" style:rel-column-width="41372*"/>
+    </style:style>
+    <style:style style:name="Tableau7.A1" style:family="table-cell">
+      <style:table-cell-properties fo:padding="0.097cm" fo:border="none"/>
+    </style:style>
+    <style:style style:name="Tableau8" style:family="table">
+      <style:table-properties style:width="16.002cm" fo:margin-left="0cm" fo:margin-right="-0.002cm" table:align="margins"/>
+    </style:style>
+    <style:style style:name="Tableau8.A" style:family="table-column">
+      <style:table-column-properties style:column-width="1.508cm" style:rel-column-width="6176*"/>
+    </style:style>
+    <style:style style:name="Tableau8.B" style:family="table-column">
+      <style:table-column-properties style:column-width="4.392cm" style:rel-column-width="17987*"/>
+    </style:style>
+    <style:style style:name="Tableau8.C" style:family="table-column">
+      <style:table-column-properties style:column-width="10.102cm" style:rel-column-width="41372*"/>
+    </style:style>
+    <style:style style:name="Tableau8.A1" style:family="table-cell">
+      <style:table-cell-properties fo:padding="0.097cm" fo:border="none"/>
+    </style:style>
+    <style:style style:name="Tableau9" style:family="table">
+      <style:table-properties style:width="16.002cm" fo:margin-left="0cm" fo:margin-right="-0.002cm" table:align="margins"/>
+    </style:style>
+    <style:style style:name="Tableau9.A" style:family="table-column">
+      <style:table-column-properties style:column-width="1.508cm" style:rel-column-width="6176*"/>
+    </style:style>
+    <style:style style:name="Tableau9.B" style:family="table-column">
+      <style:table-column-properties style:column-width="4.392cm" style:rel-column-width="17987*"/>
+    </style:style>
+    <style:style style:name="Tableau9.C" style:family="table-column">
+      <style:table-column-properties style:column-width="10.102cm" style:rel-column-width="41372*"/>
+    </style:style>
+    <style:style style:name="Tableau9.A1" style:family="table-cell">
+      <style:table-cell-properties fo:padding="0.097cm" fo:border="none"/>
+    </style:style>
+    <style:style style:name="Tableau10" style:family="table">
+      <style:table-properties style:width="16.002cm" fo:margin-left="0cm" fo:margin-right="-0.002cm" table:align="margins"/>
+    </style:style>
+    <style:style style:name="Tableau10.A" style:family="table-column">
+      <style:table-column-properties style:column-width="1.508cm" style:rel-column-width="6176*"/>
+    </style:style>
+    <style:style style:name="Tableau10.B" style:family="table-column">
+      <style:table-column-properties style:column-width="4.392cm" style:rel-column-width="17987*"/>
+    </style:style>
+    <style:style style:name="Tableau10.C" style:family="table-column">
+      <style:table-column-properties style:column-width="10.102cm" style:rel-column-width="41372*"/>
+    </style:style>
+    <style:style style:name="Tableau10.A1" style:family="table-cell">
+      <style:table-cell-properties fo:padding="0.097cm" fo:border="none"/>
+    </style:style>
+    <style:style style:name="Tableau11" style:family="table">
+      <style:table-properties style:width="16.002cm" fo:margin-left="0cm" fo:margin-right="-0.002cm" table:align="margins"/>
+    </style:style>
+    <style:style style:name="Tableau11.A" style:family="table-column">
+      <style:table-column-properties style:column-width="1.508cm" style:rel-column-width="6176*"/>
+    </style:style>
+    <style:style style:name="Tableau11.B" style:family="table-column">
+      <style:table-column-properties style:column-width="4.392cm" style:rel-column-width="17987*"/>
+    </style:style>
+    <style:style style:name="Tableau11.C" style:family="table-column">
+      <style:table-column-properties style:column-width="10.102cm" style:rel-column-width="41372*"/>
+    </style:style>
+    <style:style style:name="Tableau11.A1" style:family="table-cell">
+      <style:table-cell-properties fo:padding="0.097cm" fo:border="none"/>
+    </style:style>
+    <style:style style:name="Tableau12" style:family="table">
+      <style:table-properties style:width="16.002cm" fo:margin-left="0cm" fo:margin-right="-0.002cm" table:align="margins"/>
+    </style:style>
+    <style:style style:name="Tableau12.A" style:family="table-column">
+      <style:table-column-properties style:column-width="1.508cm" style:rel-column-width="6176*"/>
+    </style:style>
+    <style:style style:name="Tableau12.B" style:family="table-column">
+      <style:table-column-properties style:column-width="4.392cm" style:rel-column-width="17987*"/>
+    </style:style>
+    <style:style style:name="Tableau12.C" style:family="table-column">
+      <style:table-column-properties style:column-width="10.102cm" style:rel-column-width="41372*"/>
+    </style:style>
+    <style:style style:name="Tableau12.A1" style:family="table-cell">
+      <style:table-cell-properties fo:padding="0.097cm" fo:border="none"/>
+    </style:style>
+    <style:style style:name="Tableau13" style:family="table">
+      <style:table-properties style:width="16.002cm" fo:margin-left="0cm" fo:margin-right="-0.002cm" table:align="margins"/>
+    </style:style>
+    <style:style style:name="Tableau13.A" style:family="table-column">
+      <style:table-column-properties style:column-width="1.508cm" style:rel-column-width="6176*"/>
+    </style:style>
+    <style:style style:name="Tableau13.B" style:family="table-column">
+      <style:table-column-properties style:column-width="4.392cm" style:rel-column-width="17987*"/>
+    </style:style>
+    <style:style style:name="Tableau13.C" style:family="table-column">
+      <style:table-column-properties style:column-width="10.102cm" style:rel-column-width="41372*"/>
+    </style:style>
+    <style:style style:name="Tableau13.A1" style:family="table-cell">
+      <style:table-cell-properties fo:padding="0.097cm" fo:border="none"/>
+    </style:style>
+    <style:style style:name="Tableau14" style:family="table">
+      <style:table-properties style:width="16.002cm" fo:margin-left="0cm" fo:margin-right="-0.002cm" table:align="margins"/>
+    </style:style>
+    <style:style style:name="Tableau14.A" style:family="table-column">
+      <style:table-column-properties style:column-width="1.508cm" style:rel-column-width="6176*"/>
+    </style:style>
+    <style:style style:name="Tableau14.B" style:family="table-column">
+      <style:table-column-properties style:column-width="4.392cm" style:rel-column-width="17987*"/>
+    </style:style>
+    <style:style style:name="Tableau14.C" style:family="table-column">
+      <style:table-column-properties style:column-width="10.102cm" style:rel-column-width="41372*"/>
+    </style:style>
+    <style:style style:name="Tableau14.A1" style:family="table-cell">
+      <style:table-cell-properties fo:padding="0.097cm" fo:border="none"/>
+    </style:style>
+    <style:style style:name="P1" style:family="paragraph" style:parent-style-name="Title" style:master-page-name="MP0">
+      <style:paragraph-properties style:page-number="auto"/>
+    </style:style>
+    <style:style style:name="P2" style:family="paragraph" style:parent-style-name="Normal">
+      <style:text-properties style:font-name="Arial"/>
+    </style:style>
+    <style:style style:name="P3" style:family="paragraph" style:parent-style-name="Standard">
+      <style:text-properties officeooo:paragraph-rsid="002f4067"/>
+    </style:style>
+    <style:style style:name="P4" style:family="paragraph" style:parent-style-name="Standard">
+      <style:text-properties style:font-name="Arial"/>
+    </style:style>
+    <style:style style:name="P5" style:family="paragraph" style:parent-style-name="Text_20_body">
+      <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+    </style:style>
+    <style:style style:name="P6" style:family="paragraph" style:parent-style-name="Text_20_body">
+      <style:text-properties fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic"/>
+    </style:style>
+    <style:style style:name="P7" style:family="paragraph" style:parent-style-name="Text_20_body">
+      <style:text-properties style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color"/>
+    </style:style>
+    <style:style style:name="P8" style:family="paragraph" style:parent-style-name="Text_20_body">
+      <style:text-properties style:font-name="Arial1" fo:language="fr" fo:country="FR" style:language-asian="fr" style:country-asian="FR"/>
+    </style:style>
+    <style:style style:name="P9" style:family="paragraph" style:parent-style-name="Heading">
+      <style:text-properties style:font-name="Arial"/>
+    </style:style>
+    <style:style style:name="P10" style:family="paragraph" style:parent-style-name="Normal">
+      <style:text-properties style:font-name="Arial" style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="font-color"/>
+    </style:style>
+    <style:style style:name="P11" style:family="paragraph" style:parent-style-name="Normal">
+      <style:paragraph-properties fo:text-align="justify" style:justify-single-word="false"/>
+      <style:text-properties style:font-name="Arial"/>
+    </style:style>
+    <style:style style:name="P12" style:family="paragraph" style:parent-style-name="Normal">
+      <style:text-properties fo:font-style="italic" style:font-style-asian="italic" style:font-style-complex="italic"/>
+    </style:style>
+    <style:style style:name="P13" style:family="paragraph" style:parent-style-name="Text_20_body">
+      <style:paragraph-properties fo:text-align="start" style:justify-single-word="false"/>
+    </style:style>
+    <style:style style:name="P14" style:family="paragraph" style:parent-style-name="Normal">
+      <style:text-properties style:font-name="Arial" fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+    </style:style>
+    <style:style style:name="P15" style:family="paragraph" style:parent-style-name="Normal">
+      <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+    </style:style>
+    <style:style style:name="T1" style:family="text">
+      <style:text-properties fo:color="#000000" loext:opacity="100%"/>
+    </style:style>
+    <style:style style:name="T2" style:family="text">
+      <style:text-properties officeooo:rsid="002f4067"/>
+    </style:style>
+    <style:style style:name="T3" style:family="text">
+      <style:text-properties fo:language="fr" fo:country="FR" style:language-complex="ar" style:country-complex="SA"/>
+    </style:style>
+  </office:automatic-styles>
+  <office:body>
+    <office:text text:use-soft-page-breaks="true">
+      <text:sequence-decls>
+        <text:sequence-decl text:display-outline-level="0" text:name="Illustration"/>
+        <text:sequence-decl text:display-outline-level="0" text:name="Table"/>
+        <text:sequence-decl text:display-outline-level="0" text:name="Text"/>
+        <text:sequence-decl text:display-outline-level="0" text:name="Drawing"/>
+        <text:sequence-decl text:display-outline-level="0" text:name="Figure"/>
+      </text:sequence-decls>
+      <text:p text:style-name="P1">Liste des champs de fusion des rapports</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="Heading"/>
+      <text:p text:style-name="Heading">Informations du dossier :</text:p>
+      <text:p text:style-name="Standard" loext:marker-style-name="T1">
+        <text:span text:style-name="T1"/>
+      </text:p>
+      <text:p text:style-name="Standard">Avis et dérogations dossier</text:p>
+      <text:p text:style-name="Standard">[!-- BEGIN avisDerogations --]</text:p>
+      <text:p text:style-name="Standard"><text:span text:style-name="T2">Type: </text:span>{type}</text:p>
+      <text:p text:style-name="Standard"><text:span text:style-name="T2">Titre: </text:span>{titre}</text:p>
+      <text:p text:style-name="Standard"><text:span text:style-name="T2">Objet: </text:span>{objet}</text:p>
+      <text:p text:style-name="Standard"><text:span text:style-name="T2">Justification: </text:span>{justification}</text:p>
+      <text:p text:style-name="Standard"><text:span text:style-name="T2">Articles concernés: </text:span>{articles_concernes}</text:p>
+      <text:p text:style-name="Standard"><text:span text:style-name="T2">Mesures compensatoires proposées: </text:span>{mesures_compensatoires_proposees}</text:p>
+      <text:p text:style-name="Standard"><text:span text:style-name="T2">Analyse de risque: </text:span>{analyse_de_risque}</text:p>
+      <text:p text:style-name="Standard"><text:span text:style-name="T2">Avis: </text:span>{avis}</text:p>
+      <text:p text:style-name="Standard"><text:span text:style-name="T2">Identifiant du dossier levant: </text:span>{identifiantdossierleve}</text:p>
+      <text:p text:style-name="Standard"><text:span text:style-name="T2">Date: </text:span>{date}</text:p>
+      <text:p text:style-name="Standard">[!-- END avisDerogations --]</text:p>
+      <text:p text:style-name="Standard"/>
+      <text:p text:style-name="Standard">Avis et dérogations établissement</text:p>
+      <text:p text:style-name="Standard">[!-- BEGIN avisDerogationsEtablissement --]</text:p>
+      <text:p text:style-name="P3"><text:span text:style-name="T2">Type: </text:span>{type}</text:p>
+      <text:p text:style-name="P3"><text:span text:style-name="T2">Titre: </text:span>{titre}</text:p>
+      <text:p text:style-name="P3"><text:span text:style-name="T2">Objet: </text:span>{objet}</text:p>
+      <text:p text:style-name="P3"><text:span text:style-name="T2">Justification: </text:span>{justification}</text:p>
+      <text:p text:style-name="P3"><text:span text:style-name="T2">Articles concernés: </text:span>{articles_concernes}</text:p>
+      <text:p text:style-name="P3"><text:span text:style-name="T2">Mesures compensatoires proposées: </text:span>{mesures_compensatoires_proposees}</text:p>
+      <text:p text:style-name="P3"><text:span text:style-name="T2">Analyse de risque: </text:span>{analyse_de_risque}</text:p>
+      <text:p text:style-name="P3"><text:span text:style-name="T2">Avis: </text:span>{avis}</text:p>
+      <text:p text:style-name="P3"><text:span text:style-name="T2">Identifiant du dossier levant: </text:span>{identifiantdossierleve}</text:p>
+      <text:p text:style-name="P3"><text:span text:style-name="T2">Date: </text:span>{date}</text:p>
+      <text:p text:style-name="Standard">[!-- END avisDerogationsEtablissement --]</text:p>
+      <text:p text:style-name="P4"/>
+      <text:p text:style-name="P5">Identifiant unique du dossier : {idDossier}</text:p>
+      <text:p text:style-name="P6">Date de génération du rapport : {dateGeneration}</text:p>
+      <text:p text:style-name="P7">Date du jour : {dateDuJour}</text:p>
+      <text:p text:style-name="Text_20_body">Type du dossier : {typeDossier}</text:p>
+      <text:p text:style-name="Text_20_body">Nature du dossier : {natureDossier}</text:p>
+      <text:p text:style-name="Text_20_body">Objet : {objetDossier}</text:p>
+      <text:p text:style-name="Text_20_body">Date de création du dossier : {dateCreationDossier}</text:p>
+      <text:p text:style-name="Text_20_body">Numéro document urbanisme : {numDocUrba}</text:p>
+      <text:p text:style-name="Text_20_body">Date de dépôt mairie/service instructeur : {dateDepotMairie}</text:p>
+      <text:p text:style-name="Text_20_body">Date de réception au secrétariat de la commission : {dateDepotSec}</text:p>
+      <text:p text:style-name="Text_20_body">Date de réception au service rapporteur de la commission : {dateSDIS}</text:p>
+      <text:p text:style-name="Text_20_body">Date de visite : {dateVisite}</text:p>
+      <text:p text:style-name="Text_20_body">Heure de la visite : {heureVisite}</text:p>
+      <text:p text:style-name="Text_20_body">Date de passage en commission : {dateComm}</text:p>
+      <text:p text:style-name="Text_20_body">État dossier (Complet/Incomplet) : {etatDossier}</text:p>
+      <text:p text:style-name="Text_20_body">Hors délai (Oui/Non) : {horsDelai}</text:p>
+      <text:p text:style-name="Text_20_body">Analyse de risque : {analyseRisque}</text:p>
+      <text:p text:style-name="Text_20_body">Demandeur du dossier : {demandeurDossier}</text:p>
+      <text:p text:style-name="Text_20_body"><text:soft-page-break/>Avis du rapporteur : {avisDossier}</text:p>
+      <text:p text:style-name="Text_20_body">Avis de la commission : {avisDossierCommission}</text:p>
+      <text:p text:style-name="Text_20_body">Descriptif dossier : {descriptifDossier}</text:p>
+      <text:p text:style-name="Standard"/>
+      <text:p text:style-name="Text_20_body">Règles auxquelles il est demandé de déroger : {reglesDerog}</text:p>
+      <text:p text:style-name="Text_20_body">Justification de la dérogation : {justificationDerog}</text:p>
+      <text:p text:style-name="Text_20_body">Mesures compensatoires proposées : {mesuresCompensatoiresDerog}</text:p>
+      <text:p text:style-name="Text_20_body">Mesures complémentaires à respecter : {mesuresComplementairesDerog}</text:p>
+      <text:p text:style-name="Text_20_body">Observations : {observationDossier}</text:p>
+      <text:p text:style-name="Text_20_body">Date avant laquelle les prescriptions doivent être levées : {dateDelaipresc}</text:p>
+      <text:p text:style-name="Text_20_body">Date de réception du RVRAT et attestation solidité et MO : {dateRvrat}</text:p>
+      <text:p text:style-name="Text_20_body">Liste des prévisionnistes du dossier : [!-- BEGIN preventionnistes --]{grade} {nom} {prenom}[!-- END preventionnistes --]</text:p>
+      <text:p text:style-name="Text_20_body">Liste des numéros de téléphone des prévisionnistes du dossier : [!-- BEGIN preventionnistesTel --]{tel}[!-- END preventionnistesTel --]</text:p>
+      <text:p text:style-name="P8">Liste des mails des prévisionnistes du dossier : {listeMailPreventioniste}</text:p>
+      <text:p text:style-name="Text_20_body">Lorsque le dossier est incomplet affichage des documents manquants :</text:p>
+      <text:p text:style-name="Text_20_body">{docManquant}</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P9">Service instructeur </text:p>
+      <text:p text:style-name="Text_20_body">Libellé : {servInstructeur}</text:p>
+      <text:p text:style-name="Text_20_body">Prénom : {servInstructeurPrenomContact}</text:p>
+      <text:p text:style-name="Text_20_body">Nom : {servInstructeurNomContact}</text:p>
+      <text:p text:style-name="Text_20_body">Email : {servInstructeurMail}</text:p>
+      <text:p text:style-name="P9">Maire de la commune de l'établissement </text:p>
+      <text:p text:style-name="Text_20_body">Nom : {nomMaire}</text:p>
+      <text:p text:style-name="Text_20_body">Prénom : {prenomMaire}</text:p>
+      <text:p text:style-name="Text_20_body">Email : {mailMaire}</text:p>
+      <text:p text:style-name="Text_20_body">Téléphone fixe : {telFixeMaire}</text:p>
+      <text:p text:style-name="Text_20_body">Téléphone portable : {telPortMaire}</text:p>
+      <text:p text:style-name="Text_20_body">Fax : {numFaxMaire}</text:p>
+      <text:p text:style-name="Text_20_body">Adresse postale : {numeroMaire} {rueMaire}, {cpMaire} {villeMaire}</text:p>
+      <text:p text:style-name="Heading">Contacts du dossier </text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P10">Directeur unique de sécurité :</text:p>
+      <text:p text:style-name="P2"><text:tab/>Nom : {nomDus}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Prénom : {prenomDus}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Numéro de téléphone fixe : {telFixeDus}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Numéro de téléphone portable : {telPortDus}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Numéro de fax : {numFaxDus}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Société : {societeDus}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Mail : {mailDus}</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P10">Exploitant :</text:p>
+      <text:p text:style-name="P2"><text:tab/>Nom : {nomExploitant}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Prénom : {prenomExploitant}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Numéro de téléphone fixe : {telFixeExploitant}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Numéro de téléphone portable : {telPortExploitant}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Numéro de fax : {numFaxExploitant}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Société : {societeExploitant}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Mail : {mailExploitant}</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P10">Responsable de sécurité :</text:p>
+      <text:p text:style-name="P2"><text:tab/>Nom : {nomRespSecu}</text:p>
+      <text:p text:style-name="P2"><text:soft-page-break/><text:tab/>Prénom : {prenomRespSecu}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Numéro de téléphone fixe : {telFixeRespSecu}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Numéro de téléphone portable : {telPortRespSecu}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Numéro de fax : {numFaxRespSecu}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Société : {societeRespSecu}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Mail : {mailRespSecu}</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P10">Propriétaire :</text:p>
+      <text:p text:style-name="P2"><text:tab/>Nom : {nomProprio}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Prénom : {prenomProprio}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Numéro de téléphone fixe : {telFixeProprio}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Numéro de téléphone portable : {telPortProprio}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Numéro de fax : {numFaxProprio}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Société : {societeProprio}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Mail : {mailProprio}</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P10">Pétitionnaire :</text:p>
+      <text:p text:style-name="P2"><text:tab/>Nom : {nomPetitionnaireDemandeur}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Prénom : {prenomPetitionnaireDemandeur}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Numéro de téléphone fixe : {telFixePetitionnaireDemandeur}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Numéro de téléphone portable : {telPortPetitionnaireDemandeur}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Numéro de fax : {numFaxPetitionnaireDemandeur}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Société : {societePetitionnaireDemandeur}</text:p>
+      <text:p text:style-name="P2"><text:tab/>Mail : {mailPetitionnaireDemandeur}</text:p>
+      <text:p text:style-name="Heading">Informations de l'entité :</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P2">Identifiant unique de l'entité : {numWinPrev}</text:p>
+      <text:p text:style-name="P2">Commune de l'entité : {communeEtab}</text:p>
+      <text:p text:style-name="P2">Libellé de l'entité : {etablissementLibelle}</text:p>
+      <text:p text:style-name="P2">Adresse de l'entité : {etablissementAdresse}</text:p>
+      <text:p text:style-name="P2">Numéro de téléphone de l'entité : {numTelEtab}</text:p>
+      <text:p text:style-name="P2">Numéro de fax de l'entité : {numFaxEtab}</text:p>
+      <text:p text:style-name="P2">Activité principale de l'entité : {activiteP}</text:p>
+      <text:p text:style-name="P2">Type principal de l'entité : {typeLettreP}</text:p>
+      <text:p text:style-name="P2">Activité(s) secondaire(s) de l'entité : <text:span text:style-name="T3">{activiteS}</text:span></text:p>
+      <text:p text:style-name="P2">Type(s) secondaire(s) de l'entité : {typeLettreS}</text:p>
+      <text:p text:style-name="P2">Catégorie de l'entité : {categorieEtab}</text:p>
+      <text:p text:style-name="P2">Famille d’habitation : {familleEtab}</text:p>
+      <text:p text:style-name="P2">Périodicité : {periodiciteEtab}</text:p>
+      <text:p text:style-name="P2">Effectif public de l'entité : <text:s/>{numPublic} </text:p>
+      <text:p text:style-name="P2">Effectif personnel : <text:s/>{numPersonnel}</text:p>
+      <text:p text:style-name="P2">Effectif hébergé : {numHeberge}</text:p>
+      <text:p text:style-name="P2">Effectif total : <text:s/>{numTotal} </text:p>
+      <text:p text:style-name="P2">Genre de l'entité : {genreEtab}</text:p>
+      <text:p text:style-name="P2">GN 2 : {gn2}</text:p>
+      <text:p text:style-name="Text_20_body">GN 3 : {gn3}</text:p>
+      <text:p text:style-name="Text_20_body">Date de la dernière visite périodique : {dateLastVP}</text:p>
+      <text:p text:style-name="Text_20_body">Avis de la dernière visite périodique : {avisLastVP}</text:p>
+      <text:p text:style-name="Text_20_body">Avis de la prochaine visite périodique : {prochaineVisite}</text:p>
+      <text:p text:style-name="Heading">Descriptif de l'établissement:</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P2">Historique de l'établissement : {historiqueDescriptifEtab}</text:p>
+      <text:p text:style-name="P11">Descriptif général : {descriptifEtab}</text:p>
+      <text:p text:style-name="P2">Dérogations accordées : {derogAccEtab}</text:p>
+      <text:p text:style-name="P2">Implantation :</text:p>
+      <text:p text:style-name="P2">Surface emprise au sol (m²) : {surfaceEmpriseSol}</text:p>
+      <text:p text:style-name="P2">SHON (m²) : {SHON}</text:p>
+      <text:p text:style-name="P2"><text:soft-page-break/>SHOB (m²) : {SHOB}</text:p>
+      <text:p text:style-name="P2">Nombre de niveaux : {nbNiveaux}</text:p>
+      <text:p text:style-name="P2">PBDN (m) : {PBDN}</text:p>
+      <text:p text:style-name="P2">Surface totale (m²) : {surfaceTotale}</text:p>
+      <text:p text:style-name="P2">Surface accessible au public (m²) : {surfaceAccessible}</text:p>
+      <text:p text:style-name="P2">Desserte :</text:p>
+      <text:p text:style-name="P2">Nombre de façades accessibles : {nbFacadeAccess}</text:p>
+      <text:p text:style-name="P2">Voie engin : {voieEngin}</text:p>
+      <text:p text:style-name="P2">Voie échelle : {voieEchelle}</text:p>
+      <text:p text:style-name="P2">Espace libre : {espaceLibre}</text:p>
+      <text:p text:style-name="P2">Isolement par rapport aux tiers :</text:p>
+      <text:p text:style-name="P2">Latéral CF (minutes) : {lateralCF}</text:p>
+      <text:p text:style-name="P2">Superposé CF (minutes) : {superposeCF}</text:p>
+      <text:p text:style-name="P2">Vis-à-vis (m) : {visAvis}</text:p>
+      <text:p text:style-name="P2">Stabilité au feu :</text:p>
+      <text:p text:style-name="P2">Structure SF (minutes) : {structureSF}</text:p>
+      <text:p text:style-name="P2">Plancher SF (minutes) : {plancherSF}</text:p>
+      <text:p text:style-name="P2">Distribution intérieure :</text:p>
+      <text:p text:style-name="P2">Cloisonnement traditionnel : {cloisonnementTrad}</text:p>
+      <text:p text:style-name="P2">Secteurs : {secteurs}</text:p>
+      <text:p text:style-name="P2">Compartiments : {compartiments}</text:p>
+      <text:p text:style-name="P2">Locaux à risques :</text:p>
+      <text:p text:style-name="P2">Nombre de locaux à risques moyens : {locauxRisquesMoyens}</text:p>
+      <text:p text:style-name="P2">Nombre de locaux à risques importants : {locauxRisquesImportants}</text:p>
+      <text:p text:style-name="P2">Espaces d'attentes sécurisés :</text:p>
+      <text:p text:style-name="P2">Nombre : {espacesAttentesNombre}</text:p>
+      <text:p text:style-name="P2">Nombre de niveaux concerncés : {espacesAttentesNiveaux}</text:p>
+      <text:p text:style-name="P2">Désenfumage :</text:p>
+      <text:p text:style-name="P2">Naturel : {desenfNaturel}</text:p>
+      <text:p text:style-name="P2">Mécanique : {desenfMecanique}</text:p>
+      <text:p text:style-name="P2">Commentaire : {desenfCommentaire}</text:p>
+      <text:p text:style-name="P2">Chaufferies :</text:p>
+      <text:p text:style-name="P2">Nombre : {nbChaufferie}</text:p>
+      <text:p text:style-name="P2">Puissance max (kw) : {puissanceMaxChauff}</text:p>
+      <text:p text:style-name="P2">Nombre de chaufferies 30kw : {nbChauff30kw}</text:p>
+      <text:p text:style-name="P2">Nombre de chaufferies 70kw : {nbChauff70kw}</text:p>
+      <text:p text:style-name="P2">Nombre de chaufferies 2mw : {nbChauff2mw}</text:p>
+      <text:p text:style-name="P2">Puissance totale (kw) : {puissTotalChaff}</text:p>
+      <text:p text:style-name="P2">Localisation des coupures d'énergies :</text:p>
+      <text:p text:style-name="P2">Gaz : {locGaz}</text:p>
+      <text:p text:style-name="P2">Électricité : {locElectricite}</text:p>
+      <text:p text:style-name="P2">Photovoltaïque : {locPhotovoltaique}</text:p>
+      <text:p text:style-name="P2">Autre : {locAutre}</text:p>
+      <text:p text:style-name="P2">Ascenseurs :</text:p>
+      <text:p text:style-name="P2">Nombre ascenseurs total : {nbAscTot}</text:p>
+      <text:p text:style-name="P2">Nombre ascenseurs de type AS4 : {nbAscAS4}</text:p>
+      <text:p text:style-name="P2">Moyens de secours :</text:p>
+      <text:p text:style-name="P2">Colonnes sèches : {colSeches}</text:p>
+      <text:p text:style-name="P2">Colonnes humides : {colHumides}</text:p>
+      <text:p text:style-name="P2">RIA : {RIA}</text:p>
+      <text:p text:style-name="P2">Sprinkleur : {sprinkleur}</text:p>
+      <text:p text:style-name="P2">Brouillard d'eau : {brouillardEau}</text:p>
+      <text:p text:style-name="P2">PC Sécurité :</text:p>
+      <text:p text:style-name="P2">Présence : {presencePCS}</text:p>
+      <text:p text:style-name="P2">Localisation : {localisationPCS}</text:p>
+      <text:p text:style-name="P2">SSI :</text:p>
+      <text:p text:style-name="P2">Présence : {presenceSSI}</text:p>
+      <text:p text:style-name="P2">Catégorie SSI : {catSSI}</text:p>
+      <text:p text:style-name="P2">Alarme type : {alarmeSSI}</text:p>
+      <text:p text:style-name="P2">Service de sécurité :</text:p>
+      <text:p text:style-name="P2">Personne qualifiée désignée (EL18) : {persQualEL18}</text:p>
+      <text:p text:style-name="P2"><text:soft-page-break/>Personnels désignés : {persDesignes}</text:p>
+      <text:p text:style-name="P2">Agent de sécurité : {nbAgentSecu}</text:p>
+      <text:p text:style-name="P2">Chef d'équipe sécurité : {nbChefEquipeSecu}</text:p>
+      <text:p text:style-name="P2">Chef de service sécurité : {nbChefServSecu}</text:p>
+      <text:p text:style-name="P2">Sapeurs Pompiers : {nbSp}</text:p>
+      <text:p text:style-name="P2">Commentaire sur les SP : {commentaireSp}</text:p>
+      <text:p text:style-name="P2">Défense incendie :</text:p>
+      <text:p text:style-name="P2">Nombre de point d'eau : {nbPointEau}</text:p>
+      <text:p text:style-name="P2">Volume des points d'eau (m3) : {volumePointEau}</text:p>
+      <text:p text:style-name="P2">Commentaires sur le / les points d'eau naturel : {commentairePointEauNat}</text:p>
+      <text:p text:style-name="P2">PI : {PI}</text:p>
+      <text:p text:style-name="P2">Bi : BÃ¢timent Incendie</text:p>
+      <text:p text:style-name="P2">Débit simultané (m3/h) : {debitSimultane}</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="Heading">Informations du père de l'entité :</text:p>
+      <text:p text:style-name="P12">(si entité ERP =&gt; infos Site, si entité Cellule =&gt; infos ERP)</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P2">Libellé de l'entité : {etablissementLibelleP}</text:p>
+      <text:p text:style-name="P2">Activité principale de l'entité : {activitePPere}</text:p>
+      <text:p text:style-name="P2">Type principal de l'entité : {typeLettrePPere}</text:p>
+      <text:p text:style-name="P2">Catégorie de l'entité : {categorieEtabPere}</text:p>
+      <text:p text:style-name="P2">Genre de l'entité : {genrePere}</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="Heading">Informations de la commission :</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P2">Libellé de la commission : {libelle_commission} </text:p>
+      <text:p text:style-name="P2">Date de la commission : {date_commEntete}</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="Heading">Liste des textes applicables :</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P13">[!-- BEGIN texteAppl --] <text:s text:c="5"/>► {libelleTexteAppl}</text:p>
+      <text:p text:style-name="P13">[!-- END texteAppl --]</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="Heading">Liste des documents consultés dans le dossier :</text:p>
+      <text:p text:style-name="P2"/>
+      <table:table table:name="Tableau15" table:style-name="Tableau15">
+        <table:table-column table:style-name="Tableau15.A" table:number-columns-repeated="3"/>
+        <table:table-column table:style-name="Tableau15.D"/>
+        <table:table-row>
+          <table:table-cell table:style-name="Tableau15.A1" office:value-type="string">
+            <text:p text:style-name="P2"/>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau15.A1" office:value-type="string">
+            <text:p text:style-name="P14">Libellé</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau15.A1" office:value-type="string">
+            <text:p text:style-name="P14">Référence</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau15.D1" office:value-type="string">
+            <text:p text:style-name="P14">Date du document</text:p>
+          </table:table-cell>
+        </table:table-row>
+      </table:table>
+      <text:p text:style-name="P2">[!-- BEGIN listeDocs --]</text:p>
+      <table:table table:name="Tableau1" table:style-name="Tableau1">
+        <table:table-column table:style-name="Tableau1.A" table:number-columns-repeated="3"/>
+        <table:table-column table:style-name="Tableau1.D"/>
+        <table:table-row>
+          <table:table-cell table:style-name="Tableau1.A1" office:value-type="string">
+            <text:p text:style-name="P2">{exist}</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau1.A1" office:value-type="string">
+            <text:p text:style-name="P2">{libelledoc}</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau1.A1" office:value-type="string">
+            <text:p text:style-name="P2">{refdoc}</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau1.D1" office:value-type="string">
+            <text:p text:style-name="P2">{datedoc}</text:p>
+          </table:table-cell>
+        </table:table-row>
+      </table:table>
+      <text:p text:style-name="P2">[!-- END listeDocs --][!-- BEGIN listeDocsAjout --]</text:p>
+      <table:table table:name="Tableau3" table:style-name="Tableau3">
+        <table:table-column table:style-name="Tableau3.A" table:number-columns-repeated="3"/>
+        <table:table-column table:style-name="Tableau3.D"/>
+        <table:table-row table:style-name="Tableau3.1">
+          <table:table-cell table:style-name="Tableau3.A1" office:value-type="string">
+            <text:p text:style-name="P2">{exist}</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau3.A1" office:value-type="string">
+            <text:p text:style-name="P2">{libelledoc}</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau3.A1" office:value-type="string">
+            <text:p text:style-name="P2">{refdoc}</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau3.D1" office:value-type="string">
+            <text:p text:style-name="P2">{datedoc}</text:p>
+          </table:table-cell>
+        </table:table-row>
+      </table:table>
+      <text:p text:style-name="P2">[!-- END listeDocsAjout --] </text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="Heading">Liste des prescriptions dans le dossier :</text:p>
+      <text:p text:style-name="P15">Rappels règlementaires :</text:p>
+      <text:p text:style-name="Text_20_body"/>
+      <table:table table:name="Tableau2" table:style-name="Tableau2">
+        <table:table-column table:style-name="Tableau2.A"/>
+        <table:table-column table:style-name="Tableau2.B"/>
+        <table:table-column table:style-name="Tableau2.C"/>
+        <table:table-row>
+          <table:table-cell table:style-name="Tableau2.A1" office:value-type="string">
+            <text:p text:style-name="Text_20_body"/>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau2.A1" office:value-type="string">
+            <text:p text:style-name="P5">Règlement</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau2.A1" office:value-type="string">
+            <text:p text:style-name="P5">Prescriptions</text:p>
+          </table:table-cell>
+        </table:table-row>
+      </table:table>
+      <text:p text:style-name="Text_20_body">[!-- BEGIN listeReg --]</text:p>
+      <table:table table:name="Tableau4" table:style-name="Tableau4">
+        <table:table-column table:style-name="Tableau4.A"/>
+        <table:table-column table:style-name="Tableau4.B"/>
+        <table:table-column table:style-name="Tableau4.C"/>
+        <text:soft-page-break/>
+        <table:table-row>
+          <table:table-cell table:style-name="Tableau4.A1" office:value-type="string">
+            <text:p text:style-name="Text_20_body"/>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau4.A1" office:value-type="string">
+            <text:p text:style-name="Text_20_body">{textearticle}</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau4.A1" office:value-type="string">
+            <text:p text:style-name="Text_20_body">{libelle}</text:p>
+          </table:table-cell>
+        </table:table-row>
+      </table:table>
+      <text:p text:style-name="Text_20_body">[!-- END listeReg --]</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P15">Liées à l'exploitation :</text:p>
+      <text:p text:style-name="Text_20_body"/>
+      <table:table table:name="Tableau5" table:style-name="Tableau5">
+        <table:table-column table:style-name="Tableau5.A"/>
+        <table:table-column table:style-name="Tableau5.B"/>
+        <table:table-column table:style-name="Tableau5.C"/>
+        <table:table-row>
+          <table:table-cell table:style-name="Tableau5.A1" office:value-type="string">
+            <text:p text:style-name="Text_20_body">N°</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau5.A1" office:value-type="string">
+            <text:p text:style-name="P5">Règlement</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau5.A1" office:value-type="string">
+            <text:p text:style-name="P5">Prescriptions</text:p>
+          </table:table-cell>
+        </table:table-row>
+      </table:table>
+      <text:p text:style-name="Text_20_body">[!-- BEGIN listeExploitation --]</text:p>
+      <table:table table:name="Tableau6" table:style-name="Tableau6">
+        <table:table-column table:style-name="Tableau6.A"/>
+        <table:table-column table:style-name="Tableau6.B"/>
+        <table:table-column table:style-name="Tableau6.C"/>
+        <table:table-row>
+          <table:table-cell table:style-name="Tableau6.A1" office:value-type="string">
+            <text:p text:style-name="Text_20_body">{num}</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau6.A1" office:value-type="string">
+            <text:p text:style-name="Text_20_body">{textearticle}</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau6.A1" office:value-type="string">
+            <text:p text:style-name="Text_20_body">{libelle}</text:p>
+          </table:table-cell>
+        </table:table-row>
+      </table:table>
+      <text:p text:style-name="Text_20_body">[!-- END listeExploitation --]</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P15">Améliorations :</text:p>
+      <text:p text:style-name="Text_20_body"/>
+      <table:table table:name="Tableau7" table:style-name="Tableau7">
+        <table:table-column table:style-name="Tableau7.A"/>
+        <table:table-column table:style-name="Tableau7.B"/>
+        <table:table-column table:style-name="Tableau7.C"/>
+        <table:table-row>
+          <table:table-cell table:style-name="Tableau7.A1" office:value-type="string">
+            <text:p text:style-name="P5">N°</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau7.A1" office:value-type="string">
+            <text:p text:style-name="P5">Règlement</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau7.A1" office:value-type="string">
+            <text:p text:style-name="P5">Prescriptions</text:p>
+          </table:table-cell>
+        </table:table-row>
+      </table:table>
+      <text:p text:style-name="Text_20_body">[!-- BEGIN listeAmelioration --]</text:p>
+      <table:table table:name="Tableau8" table:style-name="Tableau8">
+        <table:table-column table:style-name="Tableau8.A"/>
+        <table:table-column table:style-name="Tableau8.B"/>
+        <table:table-column table:style-name="Tableau8.C"/>
+        <table:table-row>
+          <table:table-cell table:style-name="Tableau8.A1" office:value-type="string">
+            <text:p text:style-name="Text_20_body">{num}</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau8.A1" office:value-type="string">
+            <text:p text:style-name="Text_20_body">{textearticle}</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau8.A1" office:value-type="string">
+            <text:p text:style-name="Text_20_body">{libelle}</text:p>
+          </table:table-cell>
+        </table:table-row>
+      </table:table>
+      <text:p text:style-name="Text_20_body">[!-- END listeAmelioration --]</text:p>
+      <text:p text:style-name="Text_20_body"/>
+      <text:p text:style-name="Heading">Cas spécifique des type M, activité Centre commerciaux  : liste des prescriptions des cellules :</text:p>
+      <text:p text:style-name="Standard">[!-- BEGIN cellulesPresc --]</text:p>
+      <text:h text:style-name="Heading_20_1" text:outline-level="1">Libellé du batiment principal ou de la cellule : {libelleCellule}</text:h>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P15">Rappels règlementaires :</text:p>
+      <text:p text:style-name="Text_20_body"/>
+      <table:table table:name="Tableau9" table:style-name="Tableau9">
+        <table:table-column table:style-name="Tableau9.A"/>
+        <table:table-column table:style-name="Tableau9.B"/>
+        <table:table-column table:style-name="Tableau9.C"/>
+        <table:table-row>
+          <table:table-cell table:style-name="Tableau9.A1" office:value-type="string">
+            <text:p text:style-name="Text_20_body"/>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau9.A1" office:value-type="string">
+            <text:p text:style-name="P5">Règlement</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau9.A1" office:value-type="string">
+            <text:p text:style-name="P5">Prescriptions</text:p>
+          </table:table-cell>
+        </table:table-row>
+      </table:table>
+      <text:p text:style-name="Standard">[!-- BEGIN listeRegCellule --]</text:p>
+      <table:table table:name="Tableau10" table:style-name="Tableau10">
+        <table:table-column table:style-name="Tableau10.A"/>
+        <table:table-column table:style-name="Tableau10.B"/>
+        <table:table-column table:style-name="Tableau10.C"/>
+        <table:table-row>
+          <table:table-cell table:style-name="Tableau10.A1" office:value-type="string">
+            <text:p text:style-name="Standard">{num}</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau10.A1" office:value-type="string">
+            <text:p text:style-name="Standard">{textearticle}</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau10.A1" office:value-type="string">
+            <text:p text:style-name="Standard">{libelle}</text:p>
+          </table:table-cell>
+        </table:table-row>
+      </table:table>
+      <text:p text:style-name="Standard">[!-- END listeRegCellule --]</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P15">Liées à l'exploitation :</text:p>
+      <text:p text:style-name="Text_20_body"/>
+      <table:table table:name="Tableau11" table:style-name="Tableau11">
+        <table:table-column table:style-name="Tableau11.A"/>
+        <table:table-column table:style-name="Tableau11.B"/>
+        <table:table-column table:style-name="Tableau11.C"/>
+        <table:table-row>
+          <table:table-cell table:style-name="Tableau11.A1" office:value-type="string">
+            <text:p text:style-name="P5">N°</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau11.A1" office:value-type="string">
+            <text:p text:style-name="P5">Règlement</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau11.A1" office:value-type="string">
+            <text:p text:style-name="P5">Prescriptions</text:p>
+          </table:table-cell>
+        </table:table-row>
+      </table:table>
+      <text:p text:style-name="Standard">[!-- BEGIN listeExploitationCellule --]</text:p>
+      <table:table table:name="Tableau12" table:style-name="Tableau12">
+        <table:table-column table:style-name="Tableau12.A"/>
+        <table:table-column table:style-name="Tableau12.B"/>
+        <table:table-column table:style-name="Tableau12.C"/>
+        <table:table-row>
+          <table:table-cell table:style-name="Tableau12.A1" office:value-type="string">
+            <text:p text:style-name="Standard">{num}</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau12.A1" office:value-type="string">
+            <text:p text:style-name="Standard">{textearticle}</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau12.A1" office:value-type="string">
+            <text:p text:style-name="Standard">{libelle}</text:p>
+          </table:table-cell>
+        </table:table-row>
+      </table:table>
+      <text:p text:style-name="Standard">[!-- END listeExploitationCellule --]</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P15">Améliorations :</text:p>
+      <text:p text:style-name="Text_20_body"/>
+      <table:table table:name="Tableau13" table:style-name="Tableau13">
+        <table:table-column table:style-name="Tableau13.A"/>
+        <table:table-column table:style-name="Tableau13.B"/>
+        <table:table-column table:style-name="Tableau13.C"/>
+        <table:table-row>
+          <table:table-cell table:style-name="Tableau13.A1" office:value-type="string">
+            <text:p text:style-name="P5">N°</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau13.A1" office:value-type="string">
+            <text:p text:style-name="P5">Règlement</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau13.A1" office:value-type="string">
+            <text:p text:style-name="P5">Prescriptions</text:p>
+          </table:table-cell>
+        </table:table-row>
+      </table:table>
+      <text:p text:style-name="Standard">[!-- BEGIN listeAmeliorationCellule --]</text:p>
+      <table:table table:name="Tableau14" table:style-name="Tableau14">
+        <table:table-column table:style-name="Tableau14.A"/>
+        <table:table-column table:style-name="Tableau14.B"/>
+        <table:table-column table:style-name="Tableau14.C"/>
+        <table:table-row>
+          <table:table-cell table:style-name="Tableau14.A1" office:value-type="string">
+            <text:p text:style-name="Standard">{num}</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau14.A1" office:value-type="string">
+            <text:p text:style-name="Standard">{textearticle}</text:p>
+          </table:table-cell>
+          <table:table-cell table:style-name="Tableau14.A1" office:value-type="string">
+            <text:p text:style-name="Standard">{libelle}</text:p>
+          </table:table-cell>
+        </table:table-row>
+      </table:table>
+      <text:p text:style-name="Standard">[!-- END listeAmeliorationCellule --]</text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="Standard">[!-- END cellulesPresc --]</text:p>
+    </office:text>
+  </office:body>
+</office:document-content>

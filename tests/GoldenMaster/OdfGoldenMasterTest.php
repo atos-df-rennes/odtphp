@@ -4,6 +4,7 @@ namespace Odtphp\Test\GoldenMaster;
 
 use Odtphp\Odf;
 use Odtphp\Test\Support\OdtSnapshotTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Golden-master (characterization) tests for Odtphp\Odf.
@@ -48,7 +49,7 @@ class OdfGoldenMasterTest extends OdtSnapshotTestCase
 
     /**
      * Scenario from tests/tutoriel1.php: simple variable substitution,
-     * default configuration (PclZipProxy, default delimiters).
+     * default configuration (PhpZipProxy, default delimiters).
      */
     public function testSimpleTextSubstitution(): void
     {
@@ -206,5 +207,46 @@ class OdfGoldenMasterTest extends OdtSnapshotTestCase
             $contentPhpZip,
             'PclZipProxy and PhpZipProxy must produce identical content.xml for the same operations.'
         );
+    }
+
+    /**
+     * @return array<string, array{0: string}>
+     */
+    public static function libreOfficeFixtureProvider(): array
+    {
+        return [
+            'LibreOffice 7 template' => ['libreoffice7.odt'],
+            'LibreOffice 25 template' => ['libreoffice25.odt'],
+        ];
+    }
+
+    /**
+     * Real-world template scenario (see the "support new LibreOffice
+     * versions" effort): a document produced by both LibreOffice 7 and
+     * LibreOffice 25 must be filled the same way, and both proxies must
+     * still produce a structurally valid + behaviourally identical archive.
+     *
+     */
+    #[DataProvider('libreOfficeFixtureProvider')]
+    public function testLibreOfficeTemplateSameOutputWithBothZipProxies(string $fixture): void
+    {
+        $odfPclZip = new Odf(self::FIXTURES . '/' . $fixture, [
+            'ZIP_PROXY' => \Odtphp\Zip\PclZipProxy::class,
+        ]);
+        $odfPclZip->setVars('BI', 'Bâtiment Incendie');
+        $contentPclZip = $this->normalizeXml($this->saveAndExtract($odfPclZip, 'content.xml'));
+
+        $odfPhpZip = new Odf(self::FIXTURES . '/' . $fixture, [
+            'ZIP_PROXY' => \Odtphp\Zip\PhpZipProxy::class,
+        ]);
+        $odfPhpZip->setVars('BI', 'Bâtiment Incendie');
+        $contentPhpZip = $this->normalizeXml($this->saveAndExtract($odfPhpZip, 'content.xml'));
+
+        self::assertXmlStringEqualsXmlString(
+            $contentPclZip,
+            $contentPhpZip,
+            "PclZipProxy and PhpZipProxy must produce identical content.xml for the '$fixture' template."
+        );
+        $this->assertMatchesXmlSnapshot($contentPhpZip, str_replace('.odt', '', $fixture) . '-content');
     }
 }

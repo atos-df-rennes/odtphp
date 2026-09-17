@@ -3,13 +3,14 @@
 namespace Odtphp;
 
 use Odtphp\Exceptions\OdfException;
-use Odtphp\Zip\PclZipProxy;
+use Odtphp\Zip\PhpZipProxy;
 use Odtphp\Zip\ZipInterface;
 
 /**
  * Templating class for odt file
  * You need PHP 5.2 at least
- * You need Zip Extension or PclZip library
+ * You need the Zip Extension (default ZIP_PROXY) or the bundled PclZip
+ * library (opt-in via ZIP_PROXY, e.g. for platforms without ext-zip)
  * Encoding : ISO-8859-1
  * Author: neveldo $
  * Modified by: Vikas Mahajan http://vikasmahajan.wordpress.com
@@ -27,7 +28,7 @@ class Odf implements OdfAwareDependency, \Stringable
 {
     /** @var OdfConfig */
     protected array $config = [
-        'ZIP_PROXY' => PclZipProxy::class,
+        'ZIP_PROXY' => PhpZipProxy::class,
         'DELIMITER_LEFT' => '{',
         'DELIMITER_RIGHT' => '}',
         'PATH_TO_TMP' => null,
