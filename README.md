@@ -10,7 +10,7 @@ This repository already includes the changes suggested by [Vikas Mahajan][1] and
 
 ### LibreOffice / OpenDocument compatibility
 
-Since version 2.x, the default ZIP handler is `Odtphp\Zip\PhpZipProxy` (PHP `ext-zip`), which is now
+Since version 4.x, the default ZIP handler is `Odtphp\Zip\PhpZipProxy` (PHP `ext-zip`), which is now
 a required extension (`ext-zip` in `composer.json`). This fixes documents generated from ODT templates
 produced by LibreOffice >= 25 being flagged as "corrupted" and requiring a repair on open: the bundled
 `PclZipProxy` used to leave a stale ZIP "data descriptor" flag when rewriting archives that contain
