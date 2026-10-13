@@ -20,7 +20,7 @@
         "rector/rector": "^2.6",
         "friendsofphp/php-cs-fixer": "^3.95",
         "symfony/var-dumper": "^7.4",
-        "rector/jack": "^1.0"
+        "rector/swiss-knife": "^2.7"
     },
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse --memory-limit=-1",
